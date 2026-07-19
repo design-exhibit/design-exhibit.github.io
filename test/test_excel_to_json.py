@@ -81,6 +81,27 @@ class ExcelParserTest(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, "公开Excel不能包含"):
             parse_workbook(path)
 
+    def test_parse_new_document_prices(self):
+        path = self.make_workbook(
+            [
+                "项目编号", "项目名称", "单片机分类", "成果书", "任务书",
+                "PPT送答辩模板", "成果书+任务书+PPT+答辩模板+过AI+过查重",
+            ],
+            [["T001", "测试项目", "STM32", 100, 10, 20, 400]],
+        )
+
+        project = parse_workbook(path)["projects"][0]
+
+        self.assertEqual(
+            project["prices"],
+            [
+                {"label": "成果书", "price": 100},
+                {"label": "任务书", "price": 10},
+                {"label": "PPT送答辩模板", "price": 20},
+                {"label": "成果书+任务书+PPT+答辩模板+过AI+过查重", "price": 400},
+            ],
+        )
+
     def test_parse_wps_images_and_skip_absent_price(self):
         path = self.make_workbook(
             [

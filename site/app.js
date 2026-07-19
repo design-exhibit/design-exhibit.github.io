@@ -1,4 +1,7 @@
 const PALETTE = ["#118b86", "#2b71b8", "#8c62bd", "#d47b32", "#4d8f4e", "#b64f6f"];
+const DESIGN_PRICE_LABELS = new Set(["仿真+仿真代码", "原理图+PCB设计", "硬件实物+配套硬件代码"]);
+const DOCUMENT_PACKAGE_LABEL = "成果书+任务书+PPT+答辩模板+过AI+过查重";
+const DOCUMENT_SINGLE_LABELS = new Set(["成果书", "任务书", "PPT送答辩模板", "论文"]);
 
 export function normalizeText(value) {
   return String(value ?? "").toLowerCase().normalize("NFKC").replace(/\s+/g, " ").trim();
@@ -14,7 +17,7 @@ function searchableText(project) {
     project.mcuModel,
     ...(project.usages || []),
     ...(project.modules || []),
-    project.description,
+    ...(project.prices || []).map((item) => item.label),
     ...(project.keywords || [])
   ].join(" "));
 }
@@ -69,9 +72,17 @@ function formatPrice(value) {
 }
 
 function priceSummary(prices = []) {
-  const numeric = prices.map((item) => item.price).filter((value) => typeof value === "number");
+  const designPrices = prices.filter((item) => DESIGN_PRICE_LABELS.has(item.label));
+  const numeric = designPrices.map((item) => item.price).filter((value) => typeof value === "number");
   if (numeric.length) return `${formatPrice(Math.min(...numeric))} 起`;
-  return prices.length ? formatPrice(prices[0].price) : "价格咨询";
+  if (designPrices.length) return formatPrice(designPrices[0].price);
+  return prices.length ? `${prices.length} 种方案` : "价格咨询";
+}
+
+export function priceLabelsToUncheck(changedLabel, checked) {
+  if (!checked) return [];
+  if (changedLabel === DOCUMENT_PACKAGE_LABEL) return [...DOCUMENT_SINGLE_LABELS];
+  return DOCUMENT_SINGLE_LABELS.has(changedLabel) ? [DOCUMENT_PACKAGE_LABEL] : [];
 }
 
 export function priceSelectionSummary(selectedPrices = []) {
@@ -153,7 +164,7 @@ function createProjectCard(project, exact = false) {
     }
     card.append(media);
   }
-  if (project.description) card.append(element("p", "project-description", project.description));
+  if (project.description) card.append(element("p", "project-description", `项目说明：${project.description}`));
 
   const chips = element("div", "chip-row");
   for (const usage of (project.usages || []).slice(0, 3)) chips.append(element("span", "chip", usage));
@@ -166,15 +177,32 @@ function createProjectCard(project, exact = false) {
     const summary = element("summary", "", `自由组合 ${project.prices.length} 种价格方案`);
     const list = element("div", "price-list");
     const choices = [];
-    for (const option of project.prices) {
-      const row = element("label", "price-row");
-      const choice = element("span", "price-choice");
-      const checkbox = element("input");
-      checkbox.type = "checkbox";
-      choice.append(checkbox, element("span", "", option.label));
-      row.append(choice, element("strong", "", formatPrice(option.price)));
-      list.append(row);
-      choices.push({ checkbox, option });
+    const groups = [
+      ["设计与硬件", project.prices.filter((option) => DESIGN_PRICE_LABELS.has(option.label))],
+      ["文档与答辩", project.prices.filter((option) => !DESIGN_PRICE_LABELS.has(option.label))]
+    ];
+    for (const [groupLabel, options] of groups) {
+      if (!options.length) continue;
+      list.append(element("div", "price-group-title", groupLabel));
+      for (const option of options) {
+        const row = element("label", "price-row");
+        const choice = element("span", "price-choice");
+        const checkbox = element("input");
+        checkbox.type = "checkbox";
+        const label = element("span", "price-option-copy");
+        if (option.label === DOCUMENT_PACKAGE_LABEL) {
+          label.append(
+            element("span", "price-option-title", "全套文档服务"),
+            element("span", "price-option-detail", "成果书 + 任务书 + PPT + 答辩模板 + 过AI + 过查重")
+          );
+        } else {
+          label.textContent = option.label;
+        }
+        choice.append(checkbox, label);
+        row.append(choice, element("strong", "", formatPrice(option.price)));
+        list.append(row);
+        choices.push({ checkbox, option });
+      }
     }
     const total = element("output", "price-total", priceSelectionSummary());
     total.setAttribute("aria-live", "polite");
@@ -208,7 +236,14 @@ function createProjectCard(project, exact = false) {
       confirmation.hidden = true;
       copy.textContent = "一键复制需求发送给客服";
     };
-    list.addEventListener("change", () => {
+    list.addEventListener("change", (event) => {
+      const changed = choices.find(({ checkbox }) => checkbox === event.target);
+      if (changed) {
+        const labels = new Set(priceLabelsToUncheck(changed.option.label, changed.checkbox.checked));
+        for (const choice of choices) {
+          if (labels.has(choice.option.label)) choice.checkbox.checked = false;
+        }
+      }
       const selected = selectedOptions();
       total.textContent = priceSelectionSummary(selected);
       confirm.disabled = !selected.length;

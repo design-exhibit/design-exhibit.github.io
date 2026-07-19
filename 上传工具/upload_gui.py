@@ -37,6 +37,7 @@ from excel_to_json import parse_workbook  # noqa: E402
 
 DATA_RELATIVE_PATH = Path("data") / "项目链接清单.xlsx"
 DATA_PATH = REPOSITORY_ROOT / DATA_RELATIVE_PATH
+EDIT_SOURCE_PATH = REPOSITORY_ROOT / "项目链接清单.xlsx"
 EXPECTED_REPOSITORY = "design-exhibit/design-exhibit.github.io"
 WEBSITE_URL = "https://design-exhibit.github.io/"
 COMMIT_PREFIX = "更新项目数据表 "
@@ -259,7 +260,9 @@ def upload_workbook(
 class UploadApplication:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.selected_path: Optional[Path] = DATA_PATH if DATA_PATH.exists() else None
+        self.selected_path: Optional[Path] = next(
+            (path for path in (EDIT_SOURCE_PATH, DATA_PATH) if path.exists()), None
+        )
         self.validated_digest = ""
         self.busy = False
         self.events = queue.Queue()
@@ -433,7 +436,7 @@ class UploadApplication:
     def select_file(self) -> None:
         filename = filedialog.askopenfilename(
             title="选择项目数据表",
-            initialdir=str(DATA_PATH.parent),
+            initialdir=str(self.selected_path.parent if self.selected_path else REPOSITORY_ROOT),
             filetypes=[("Excel 数据表", "*.xlsx")],
         )
         if not filename:

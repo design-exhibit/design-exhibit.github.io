@@ -37,6 +37,10 @@ FIELD_ALIASES = {
     "simulationPrice": ("仿真+仿真代码", "仿真及代码", "仿真价格"),
     "pcbPrice": ("原理图+PCB设计", "原理图及PCB", "PCB价格"),
     "hardwarePrice": ("硬件实物+配套硬件代码", "硬件实物及代码", "硬件价格"),
+    "achievementReportPrice": ("成果书",),
+    "taskBookPrice": ("任务书",),
+    "pptPrice": ("PPT送答辩模板",),
+    "documentPackagePrice": ("成果书+任务书+PPT+答辩模板+过AI+过查重",),
     "thesisPrice": ("论文", "论文价格"),
 }
 
@@ -54,6 +58,10 @@ PRICE_FIELDS = (
     ("仿真+仿真代码", "simulationPrice"),
     ("原理图+PCB设计", "pcbPrice"),
     ("硬件实物+配套硬件代码", "hardwarePrice"),
+    ("成果书", "achievementReportPrice"),
+    ("任务书", "taskBookPrice"),
+    ("PPT送答辩模板", "pptPrice"),
+    ("成果书+任务书+PPT+答辩模板+过AI+过查重", "documentPackagePrice"),
     ("论文", "thesisPrice"),
 )
 IMAGE_FIELDS = (

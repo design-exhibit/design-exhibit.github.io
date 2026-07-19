@@ -1,7 +1,13 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import test from "node:test";
-import { buildRequirementText, priceSelectionSummary, projectImageEntries, searchProjects } from "../site/app.js";
+import {
+  buildRequirementText,
+  priceLabelsToUncheck,
+  priceSelectionSummary,
+  projectImageEntries,
+  searchProjects
+} from "../site/app.js";
 
 test("搜索支持精准编号和多关键词", () => {
   const projects = [
@@ -13,8 +19,9 @@ test("搜索支持精准编号和多关键词", () => {
       mcuModel: "",
       usages: ["环境监测"],
       modules: ["DHT11", "OLED"],
+      description: "仿真上不了云，实物可以",
       keywords: [],
-      prices: [{ label: "仿真+仿真代码", price: 200 }],
+      prices: [{ label: "任务书", price: 20 }],
       sort: 1
     },
     {
@@ -36,6 +43,8 @@ test("搜索支持精准编号和多关键词", () => {
   assert.equal(exact[0].project.id, "A001");
   assert.equal(searchProjects(projects, "STM32 DHT11").length, 1);
   assert.equal(searchProjects(projects, "超声波 距离").length, 1);
+  assert.equal(searchProjects(projects, "任务书").length, 1);
+  assert.equal(searchProjects(projects, "上不了云").length, 0);
 });
 
 test("生成数据不包含内部资料字段和链接", async () => {
@@ -65,6 +74,15 @@ test("价格方案支持自由组合并计算总价", () => {
   assert.equal(priceSelectionSummary([{ price: 200 }, { price: 100 }]), "已选 2 项，合计 ¥300");
   assert.equal(priceSelectionSummary([{ price: 200 }, { price: "面议" }]), "已选 2 项，已知合计 ¥200，另有 1 项需咨询");
   assert.equal(priceSelectionSummary([{ price: "咨询" }]), "已选 1 项，价格需咨询");
+});
+
+test("全套文档服务与文档单项不会重复选择", () => {
+  assert.deepEqual(
+    priceLabelsToUncheck("成果书+任务书+PPT+答辩模板+过AI+过查重", true),
+    ["成果书", "任务书", "PPT送答辩模板", "论文"]
+  );
+  assert.deepEqual(priceLabelsToUncheck("任务书", true), ["成果书+任务书+PPT+答辩模板+过AI+过查重"]);
+  assert.deepEqual(priceLabelsToUncheck("仿真+仿真代码", true), []);
 });
 
 test("确认后生成可复制的项目需求", () => {

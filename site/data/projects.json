@@ -1,14 +1,14 @@
 {
   "meta": {
     "source": "项目链接清单.xlsx",
-    "generatedAt": "2026-07-19T07:39:14.002214Z",
-    "count": 358
+    "generatedAt": "2026-07-19T16:23:39.558050Z",
+    "count": 354
   },
   "projects": [
     {
-      "id": "S系列STM32单片机::Y001",
-      "code": "Y001",
-      "title": "基于STM32语音识别柔光台灯1",
+      "id": "S系列STM32单片机::S001",
+      "code": "S001",
+      "title": "基于STM32语音识别柔光台灯",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
@@ -19,54 +19,12 @@
       "modules": [
         "语音识别模块"
       ],
-      "description": "一些项目简介",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 1,
-      "simulationImage": {
-        "src": "./assets/generated/projects/f15428cf77158de4c355.jpg",
-        "width": 1920,
-        "height": 1080
-      },
-      "hardwareImage": {
-        "src": "./assets/generated/projects/1bffd1ee0d3a6fa16ddf.jpg",
-        "width": 1920,
-        "height": 1080
-      }
-    },
-    {
-      "id": "S系列STM32单片机::Y002",
-      "code": "Y002",
-      "title": "基于STM32语音识别蓝牙音响音箱1",
-      "series": "S系列STM32单片机",
-      "mcuFamily": "STM32",
-      "mcuModel": "",
-      "usages": [
-        "音频语音"
-      ],
-      "modules": [
-        "蓝牙模块",
-        "语音识别模块"
-      ],
       "description": "",
       "keywords": [],
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 100
         },
         {
           "label": "原理图+PCB设计",
@@ -74,19 +32,31 @@
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
+          "price": 350
         },
         {
-          "label": "论文",
+          "label": "成果书",
+          "price": 100
+        },
+        {
+          "label": "任务书",
+          "price": 100
+        },
+        {
+          "label": "PPT送答辩模板",
+          "price": 100
+        },
+        {
+          "label": "成果书+任务书+PPT+答辩模板+过AI+过查重",
           "price": 400
         }
       ],
-      "sort": 2
+      "sort": 1
     },
     {
-      "id": "S系列STM32单片机::Y003",
-      "code": "Y003",
-      "title": "基于STM32物联网WiFi云平台温湿度烟雾报警器1",
+      "id": "S系列STM32单片机::S003",
+      "code": "S003",
+      "title": "基于STM32物联网WiFi云平台温湿度烟雾报警器",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
@@ -102,32 +72,32 @@
         "烟雾传感器",
         "蜂鸣器"
       ],
-      "description": "",
+      "description": "仿真上不了云，实物可以",
       "keywords": [],
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 180
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
+          "price": 400
         },
         {
-          "label": "论文",
-          "price": 400
+          "label": "任务书",
+          "price": 100
         }
       ],
       "sort": 3
     },
     {
-      "id": "S系列STM32单片机::Y004",
-      "code": "Y004",
-      "title": "基于STM32温湿度烟雾火焰安防物联网WiFi云平台1",
+      "id": "S系列STM32单片机::S004",
+      "code": "S004",
+      "title": "基于STM32温湿度烟雾火焰安防物联网WiFi云平台",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
@@ -143,32 +113,28 @@
         "烟雾传感器",
         "火焰传感器"
       ],
-      "description": "",
+      "description": "仿真上不了云，实物可以",
       "keywords": [],
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
           "price": 400
         }
       ],
       "sort": 4
     },
     {
-      "id": "S系列STM32单片机::Y005",
-      "code": "Y005",
-      "title": "基于STM32大棚温湿度土壤湿度自动灌溉WIFI远程1",
+      "id": "S系列STM32单片机::S005",
+      "code": "S005",
+      "title": "基于STM32大棚温湿度土壤湿度自动灌溉WIFI远程",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
@@ -187,26 +153,22 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
           "price": 400
         }
       ],
       "sort": 5
     },
     {
-      "id": "S系列STM32单片机::S0141",
-      "code": "S0141",
+      "id": "S系列STM32单片机::S006",
+      "code": "S006",
       "title": "STM32单片机16*16点阵屏广告牌滚动显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -222,26 +184,22 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
+          "price": 300
         }
       ],
       "sort": 6
     },
     {
-      "id": "S系列STM32单片机::S0140",
-      "code": "S0140",
+      "id": "S系列STM32单片机::S007",
+      "code": "S007",
       "title": "STM32病床呼叫系统LCD显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -258,26 +216,22 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
+          "price": 300
         }
       ],
       "sort": 7
     },
     {
-      "id": "S系列STM32单片机::S0139",
-      "code": "S0139",
+      "id": "S系列STM32单片机::S008",
+      "code": "S008",
       "title": "STM32电子秤LCD显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -294,59 +248,22 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
+          "price": 300
         }
       ],
       "sort": 8
     },
     {
-      "id": "S系列STM32单片机::S0138",
-      "code": "S0138",
-      "title": "STM32简易信号发生器DDS可调幅度频率",
-      "series": "S系列STM32单片机",
-      "mcuFamily": "STM32",
-      "mcuModel": "",
-      "usages": [
-        "测量仪器"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 9
-    },
-    {
-      "id": "S系列STM32单片机::S0137",
-      "code": "S0137",
+      "id": "S系列STM32单片机::S010",
+      "code": "S010",
       "title": "STM32数字秒表OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -362,7 +279,7 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 100
         },
         {
           "label": "原理图+PCB设计",
@@ -370,18 +287,14 @@
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
+          "price": 300
         }
       ],
       "sort": 10
     },
     {
-      "id": "S系列STM32单片机::S0136",
-      "code": "S0136",
+      "id": "S系列STM32单片机::S011",
+      "code": "S011",
       "title": "STM32远程温湿度采集监测报警OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -402,7 +315,7 @@
       "prices": [
         {
           "label": "仿真+仿真代码",
-          "price": 200
+          "price": 150
         },
         {
           "label": "原理图+PCB设计",
@@ -411,17 +324,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 11
     },
     {
-      "id": "S系列STM32单片机::S0135",
-      "code": "S0135",
+      "id": "S系列STM32单片机::S012",
+      "code": "S012",
       "title": "STM32单片机光照检测智能调光系统",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -439,22 +348,18 @@
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
           "price": 200
         },
         {
-          "label": "论文",
-          "price": 400
+          "label": "硬件实物+配套硬件代码",
+          "price": 350
         }
       ],
       "sort": 12
     },
     {
-      "id": "S系列STM32单片机::S0134",
-      "code": "S0134",
+      "id": "S系列STM32单片机::S013",
+      "code": "S013",
       "title": "STM32物联网WiFi火灾烟雾安防自动灭火报警器",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -478,22 +383,18 @@
         },
         {
           "label": "原理图+PCB设计",
-          "price": 100
+          "price": 150
         },
         {
           "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
           "price": 400
         }
       ],
       "sort": 13
     },
     {
-      "id": "S系列STM32单片机::S0133",
-      "code": "S0133",
+      "id": "S系列STM32单片机::S014",
+      "code": "S014",
       "title": "STM32远程WIFI温湿度烟雾监测报警OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -526,17 +427,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 14
     },
     {
-      "id": "S系列STM32单片机::S0132",
-      "code": "S0132",
+      "id": "S系列STM32单片机::S015",
+      "code": "S015",
       "title": "STM32温室大棚环境监测与智能调控系统",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -560,17 +457,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 15
     },
     {
-      "id": "S系列STM32单片机::S0131",
-      "code": "S0131",
+      "id": "S系列STM32单片机::S016",
+      "code": "S016",
       "title": "基于STM32的温湿度防盗安防报警器",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -597,17 +490,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 16
     },
     {
-      "id": "S系列STM32单片机::S0130",
-      "code": "S0130",
+      "id": "S系列STM32单片机::S017",
+      "code": "S017",
       "title": "基于STM32的简易数字电流表",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -630,17 +519,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 17
     },
     {
-      "id": "S系列STM32单片机::S0129",
-      "code": "S0129",
+      "id": "S系列STM32单片机::S018",
+      "code": "S018",
       "title": "基于STM32的可燃气体测量报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -667,17 +552,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 18
     },
     {
-      "id": "S系列STM32单片机::S0128",
-      "code": "S0128",
+      "id": "S系列STM32单片机::S019",
+      "code": "S019",
       "title": "基于STM32的简易晾衣架控制仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -700,17 +581,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 19
     },
     {
-      "id": "S系列STM32单片机::S0127",
-      "code": "S0127",
+      "id": "S系列STM32单片机::S020",
+      "code": "S020",
       "title": "基于STM32的多参数水温水质检测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -735,17 +612,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 20
     },
     {
-      "id": "S系列STM32单片机::S0126",
-      "code": "S0126",
+      "id": "S系列STM32单片机::S021",
+      "code": "S021",
       "title": "基于STM32火灾烟雾浓度测量报警设计OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -775,17 +648,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 21
     },
     {
-      "id": "S系列STM32单片机::S0125",
-      "code": "S0125",
+      "id": "S系列STM32单片机::S022",
+      "code": "S022",
       "title": "基于STM32酒精浓度测量酒驾检测报警OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -813,17 +682,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 22
     },
     {
-      "id": "S系列STM32单片机::S0124",
-      "code": "S0124",
+      "id": "S系列STM32单片机::S023",
+      "code": "S023",
       "title": "基于STM32超声波倒车雷达测距报警_OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -852,17 +717,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 23
     },
     {
-      "id": "S系列STM32单片机::S0123",
-      "code": "S0123",
+      "id": "S系列STM32单片机::S024",
+      "code": "S024",
       "title": "基于STM32的电子钟万年历闹钟设计_OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -887,17 +748,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 24
     },
     {
-      "id": "S系列STM32单片机::S0122",
-      "code": "S0122",
+      "id": "S系列STM32单片机::S025",
+      "code": "S025",
       "title": "基于STM32的温湿度测量报警系统仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -925,17 +782,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 25
     },
     {
-      "id": "S系列STM32单片机::S0121",
-      "code": "S0121",
+      "id": "S系列STM32单片机::S026",
+      "code": "S026",
       "title": "基于STM32的简易计算器设计_OLED显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -960,17 +813,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 26
     },
     {
-      "id": "S系列STM32单片机::S0120",
-      "code": "S0120",
+      "id": "S系列STM32单片机::S027",
+      "code": "S027",
       "title": "基于STM32的简易计算器设计_LCD1602显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -996,17 +845,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 27
     },
     {
-      "id": "S系列STM32单片机::S0119",
-      "code": "S0119",
+      "id": "S系列STM32单片机::S028",
+      "code": "S028",
       "title": "基于STM32的电子琴音乐播放器控制系统仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1029,17 +874,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 28
     },
     {
-      "id": "S系列STM32单片机::S0118",
-      "code": "S0118",
+      "id": "S系列STM32单片机::S029",
+      "code": "S029",
       "title": "基于STM32的DHT11温湿度控制LCD1602显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1068,17 +909,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 29
     },
     {
-      "id": "S系列STM32单片机::S0117",
-      "code": "S0117",
+      "id": "S系列STM32单片机::S030",
+      "code": "S030",
       "title": "基于STM32的DHT11温湿度远程监测LCD1602显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1108,17 +945,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 30
     },
     {
-      "id": "S系列STM32单片机::S0116",
-      "code": "S0116",
+      "id": "S系列STM32单片机::S031",
+      "code": "S031",
       "title": "基于STM32的DS18B20温度远程监测LCD1602显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1147,17 +980,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 31
     },
     {
-      "id": "S系列STM32单片机::S0114",
-      "code": "S0114",
+      "id": "S系列STM32单片机::S032",
+      "code": "S032",
       "title": "基于STM32的6路抢答器Proteus仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1180,17 +1009,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 32
     },
     {
-      "id": "S系列STM32单片机::S0113",
-      "code": "S0113",
+      "id": "S系列STM32单片机::S033",
+      "code": "S033",
       "title": "基于STM32的电容电阻测量Proteus仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1213,17 +1038,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 33
     },
     {
-      "id": "S系列STM32单片机::S0112",
-      "code": "S0112",
+      "id": "S系列STM32单片机::S034",
+      "code": "S034",
       "title": "基于STM32的电阻测量_NE555振荡电路仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1246,17 +1067,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 34
     },
     {
-      "id": "S系列STM32单片机::S0111",
-      "code": "S0111",
+      "id": "S系列STM32单片机::S035",
+      "code": "S035",
       "title": "基于STM32智能台灯仿真_自动亮度久坐提醒",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1279,17 +1096,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 35
     },
     {
-      "id": "S系列STM32单片机::S0110",
-      "code": "S0110",
+      "id": "S系列STM32单片机::S036",
+      "code": "S036",
       "title": "基于STM32光照测量报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1316,17 +1129,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 36
     },
     {
-      "id": "S系列STM32单片机::S0109",
-      "code": "S0109",
+      "id": "S系列STM32单片机::S037",
+      "code": "S037",
       "title": "基于STM32的居家环境(温湿度火灾烟雾可燃气体)监测仿真设计LCD1602显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1356,17 +1165,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 37
     },
     {
-      "id": "S系列STM32单片机::S0108",
-      "code": "S0108",
+      "id": "S系列STM32单片机::S038",
+      "code": "S038",
       "title": "基于STM32的温湿度光照强度监测LCD1602仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1395,17 +1200,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 38
     },
     {
-      "id": "S系列STM32单片机::S0107",
-      "code": "S0107",
+      "id": "S系列STM32单片机::S039",
+      "code": "S039",
       "title": "基于STM32的简易温控系统LCD1602显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1431,17 +1232,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 39
     },
     {
-      "id": "S系列STM32单片机::S0106",
-      "code": "S0106",
+      "id": "S系列STM32单片机::S040",
+      "code": "S040",
       "title": "基于STM32智能灯光控制系统设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1464,17 +1261,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 40
     },
     {
-      "id": "S系列STM32单片机::S0105",
-      "code": "S0105",
+      "id": "S系列STM32单片机::S041",
+      "code": "S041",
       "title": "基于STM32两路电压测量仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1497,17 +1290,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 41
     },
     {
-      "id": "S系列STM32单片机::S0104",
-      "code": "S0104",
+      "id": "S系列STM32单片机::S042",
+      "code": "S042",
       "title": "基于STM32冰箱冷藏室控制系统",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1530,17 +1319,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 42
     },
     {
-      "id": "S系列STM32单片机::S0103",
-      "code": "S0103",
+      "id": "S系列STM32单片机::S043",
+      "code": "S043",
       "title": "基于STM32电子钟闹钟数码管显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1563,17 +1348,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 43
     },
     {
-      "id": "S系列STM32单片机::S0102",
-      "code": "S0102",
+      "id": "S系列STM32单片机::S044",
+      "code": "S044",
       "title": "基于STM32心形花样流水灯跑马灯",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1596,17 +1377,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 44
     },
     {
-      "id": "S系列STM32单片机::S0101",
-      "code": "S0101",
+      "id": "S系列STM32单片机::S045",
+      "code": "S045",
       "title": "基于STM32篮球计分器数码管显示",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1629,17 +1406,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 45
     },
     {
-      "id": "S系列STM32单片机::S0100",
-      "code": "S0100",
+      "id": "S系列STM32单片机::S046",
+      "code": "S046",
       "title": "基于STM32的倒计时数码管显示设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1662,17 +1435,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 46
     },
     {
-      "id": "S系列STM32单片机::S0099",
-      "code": "S0099",
+      "id": "S系列STM32单片机::S047",
+      "code": "S047",
       "title": "基于STM32计时秒表精度0.01秒设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1695,17 +1464,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 47
     },
     {
-      "id": "S系列STM32单片机::S0098",
-      "code": "S0098",
+      "id": "S系列STM32单片机::S048",
+      "code": "S048",
       "title": "基于STM32简易出租车计费仿真设计AES 0",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1728,17 +1493,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 48
     },
     {
-      "id": "S系列STM32单片机::S0097",
-      "code": "S0097",
+      "id": "S系列STM32单片机::S049",
+      "code": "S049",
       "title": "基于STM32的温控风扇Proteus仿真设计 AES 0",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1761,17 +1522,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 49
     },
     {
-      "id": "S系列STM32单片机::S0096",
-      "code": "S0096",
+      "id": "S系列STM32单片机::S050",
+      "code": "S050",
       "title": "基于STM32的火灾烟雾检测报警器仿真设计1",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1798,17 +1555,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 50
     },
     {
-      "id": "S系列STM32单片机::S0095",
-      "code": "S0095",
+      "id": "S系列STM32单片机::S051",
+      "code": "S051",
       "title": "基于STM32温度报警器LCD1602显示仿真_可调温",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1837,17 +1590,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 51
     },
     {
-      "id": "S系列STM32单片机::S0094",
-      "code": "S0094",
+      "id": "S系列STM32单片机::S052",
+      "code": "S052",
       "title": "基于STM32按键控制LED仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1870,17 +1619,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 52
     },
     {
-      "id": "S系列STM32单片机::S0093",
-      "code": "S0093",
+      "id": "S系列STM32单片机::S053",
+      "code": "S053",
       "title": "基于STM32的液晶LCD1602显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1906,17 +1651,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 53
     },
     {
-      "id": "S系列STM32单片机::S0092",
-      "code": "S0092",
+      "id": "S系列STM32单片机::S054",
+      "code": "S054",
       "title": "基于STM32的八位数码管显示仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1939,17 +1680,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 54
     },
     {
-      "id": "S系列STM32单片机::S0091",
-      "code": "S0091",
+      "id": "S系列STM32单片机::S055",
+      "code": "S055",
       "title": "基于STM32八位抢答器仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -1972,17 +1709,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 55
     },
     {
-      "id": "S系列STM32单片机::S0090",
-      "code": "S0090",
+      "id": "S系列STM32单片机::S056",
+      "code": "S056",
       "title": "基于STM32简易交通灯仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2005,17 +1738,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 56
     },
     {
-      "id": "S系列STM32单片机::S0089",
-      "code": "S0089",
+      "id": "S系列STM32单片机::S057",
+      "code": "S057",
       "title": "基于STM32气压报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2040,17 +1769,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 57
     },
     {
-      "id": "S系列STM32单片机::S0088",
-      "code": "S0088",
+      "id": "S系列STM32单片机::S058",
+      "code": "S058",
       "title": "基于STM32简易计算器仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2073,17 +1798,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 58
     },
     {
-      "id": "S系列STM32单片机::S0087",
-      "code": "S0087",
+      "id": "S系列STM32单片机::S059",
+      "code": "S059",
       "title": "基于STM32土壤湿度检测自动浇水仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2109,17 +1830,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 59
     },
     {
-      "id": "S系列STM32单片机::S0086",
-      "code": "S0086",
+      "id": "S系列STM32单片机::S060",
+      "code": "S060",
       "title": "基于STM32温湿度测量报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2147,17 +1864,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 60
     },
     {
-      "id": "S系列STM32单片机::S0085",
-      "code": "S0085",
+      "id": "S系列STM32单片机::S061",
+      "code": "S061",
       "title": "基于STM32水位检测控制系统仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2180,17 +1893,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 61
     },
     {
-      "id": "S系列STM32单片机::S0084",
-      "code": "S0084",
+      "id": "S系列STM32单片机::S062",
+      "code": "S062",
       "title": "基于STM32的烟雾浓度检测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2217,17 +1926,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 62
     },
     {
-      "id": "S系列STM32单片机::S0083",
-      "code": "S0083",
+      "id": "S系列STM32单片机::S063",
+      "code": "S063",
       "title": "基于STM32的空气质量检测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2253,17 +1958,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 63
     },
     {
-      "id": "S系列STM32单片机::S0082",
-      "code": "S0082",
+      "id": "S系列STM32单片机::S064",
+      "code": "S064",
       "title": "基于STM32甲醛浓度检测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2289,17 +1990,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 64
     },
     {
-      "id": "S系列STM32单片机::S0081",
-      "code": "S0081",
+      "id": "S系列STM32单片机::S065",
+      "code": "S065",
       "title": "基于STM32酒精浓度检测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2324,17 +2021,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 65
     },
     {
-      "id": "S系列STM32单片机::S0080",
-      "code": "S0080",
+      "id": "S系列STM32单片机::S066",
+      "code": "S066",
       "title": "基于STM32可燃气体(煤气天然气)监测报警仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2360,17 +2053,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 66
     },
     {
-      "id": "S系列STM32单片机::S0079",
-      "code": "S0079",
+      "id": "S系列STM32单片机::S067",
+      "code": "S067",
       "title": "基于STM32的简易电压表仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2393,17 +2082,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 67
     },
     {
-      "id": "S系列STM32单片机::S0078",
-      "code": "S0078",
+      "id": "S系列STM32单片机::S068",
+      "code": "S068",
       "title": "基于STM32的简易数字频率计仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2426,17 +2111,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 68
     },
     {
-      "id": "S系列STM32单片机::S0077",
-      "code": "S0077",
+      "id": "S系列STM32单片机::S069",
+      "code": "S069",
       "title": "基于STM32的简易电子秒表仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2459,17 +2140,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 69
     },
     {
-      "id": "S系列STM32单片机::S0076",
-      "code": "S0076",
+      "id": "S系列STM32单片机::S070",
+      "code": "S070",
       "title": "基于STM32的水质浑浊度和PH值监测系统设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2492,17 +2169,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 70
     },
     {
-      "id": "S系列STM32单片机::S0075",
-      "code": "S0075",
+      "id": "S系列STM32单片机::S071",
+      "code": "S071",
       "title": "基于STM32的DHT11温湿度控制系统仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2528,17 +2201,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 71
     },
     {
-      "id": "S系列STM32单片机::S0074",
-      "code": "S0074",
+      "id": "S系列STM32单片机::S072",
+      "code": "S072",
       "title": "基于STM32的波形信号发生器proteus仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2561,17 +2230,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 72
     },
     {
-      "id": "S系列STM32单片机::S0071",
-      "code": "S0071",
+      "id": "S系列STM32单片机::S073",
+      "code": "S073",
       "title": "基于STM32光敏检测自动智能窗帘控制系统仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2594,17 +2259,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 73
     },
     {
-      "id": "S系列STM32单片机::S0070",
-      "code": "S0070",
+      "id": "S系列STM32单片机::S074",
+      "code": "S074",
       "title": "基于STM32交通灯仿真设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2627,17 +2288,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 74
     },
     {
-      "id": "S系列STM32单片机::S0057",
-      "code": "S0057",
+      "id": "S系列STM32单片机::S075",
+      "code": "S075",
       "title": "基于STM32六路DS18B20温度监测报警",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2664,17 +2321,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 75
     },
     {
-      "id": "S系列STM32单片机::S0055",
-      "code": "S0055",
+      "id": "S系列STM32单片机::S076",
+      "code": "S076",
       "title": "基于STM32单片机RLC检测仪设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2697,17 +2350,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 76
     },
     {
-      "id": "S系列STM32单片机::S0054",
-      "code": "S0054",
+      "id": "S系列STM32单片机::S077",
+      "code": "S077",
       "title": "基于STM32电子秤电路",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2730,17 +2379,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 77
     },
     {
-      "id": "S系列STM32单片机::S0046",
-      "code": "S0046",
+      "id": "S系列STM32单片机::S078",
+      "code": "S078",
       "title": "基于STM32的DS18B20温度监控报警系统",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2767,17 +2412,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 78
     },
     {
-      "id": "S系列STM32单片机::S0045",
-      "code": "S0045",
+      "id": "S系列STM32单片机::S079",
+      "code": "S079",
       "title": "基于STM32水位检测",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2800,17 +2441,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 79
     },
     {
-      "id": "S系列STM32单片机::S0041",
-      "code": "S0041",
+      "id": "S系列STM32单片机::S080",
+      "code": "S080",
       "title": "基于STM32单片机CO气体检测",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2833,17 +2470,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 80
     },
     {
-      "id": "S系列STM32单片机::S0037",
-      "code": "S0037",
+      "id": "S系列STM32单片机::S081",
+      "code": "S081",
       "title": "基于STM32温湿度采集",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2868,17 +2501,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 81
     },
     {
-      "id": "S系列STM32单片机::S0034",
-      "code": "S0034",
+      "id": "S系列STM32单片机::S082",
+      "code": "S082",
       "title": "基于STM32超声波测距 HC-SR04",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2903,17 +2532,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 82
     },
     {
-      "id": "S系列STM32单片机::S0032",
-      "code": "S0032",
+      "id": "S系列STM32单片机::S083",
+      "code": "S083",
       "title": "基于STM32矩阵电子密码锁",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2936,17 +2561,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 83
     },
     {
-      "id": "S系列STM32单片机::S0026",
-      "code": "S0026",
+      "id": "S系列STM32单片机::S084",
+      "code": "S084",
       "title": "基于STM32大棚DHT11温湿度监测",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -2973,17 +2594,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 84
     },
     {
-      "id": "S系列STM32单片机::S0011",
-      "code": "S0011",
+      "id": "S系列STM32单片机::S085",
+      "code": "S085",
       "title": "基于STM32的BMP180气压传感器",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -3006,17 +2623,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 85
     },
     {
-      "id": "S系列STM32单片机::S0007",
-      "code": "S0007",
+      "id": "S系列STM32单片机::S086",
+      "code": "S086",
       "title": "基于STM32控制直流电机加减速正反转设计",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -3041,17 +2654,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 86
     },
     {
-      "id": "S系列STM32单片机::S0003",
-      "code": "S0003",
+      "id": "S系列STM32单片机::S087",
+      "code": "S087",
       "title": "基于STM32智能窗帘控制仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -3074,17 +2683,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 87
     },
     {
-      "id": "S系列STM32单片机::C0003",
-      "code": "C0003",
+      "id": "S系列STM32单片机::S088",
+      "code": "S088",
       "title": "基于STM32电子钟万年历仿真",
       "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
@@ -3107,287 +2712,13 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 88
     },
     {
-      "id": "C系列51单片机::C0073",
-      "code": "C0073",
-      "title": "51单片机的二氧化碳气体浓度监测报警系统1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "环境监测",
-        "安防报警"
-      ],
-      "modules": [
-        "蜂鸣器"
-      ],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 89
-    },
-    {
-      "id": "C系列51单片机::C0072",
-      "code": "C0072",
-      "title": "51单片机的四层电梯模拟控制系统设计1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 90
-    },
-    {
-      "id": "C系列51单片机::C0052",
-      "code": "C0052",
-      "title": "51单片机数字频率计1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "测量仪器"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 91
-    },
-    {
-      "id": "C系列51单片机::C0051",
-      "code": "C0051",
-      "title": "51单片机16×16点阵广告牌1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "显示与交互"
-      ],
-      "modules": [
-        "LED点阵屏"
-      ],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 92
-    },
-    {
-      "id": "C系列51单片机::C0050",
-      "code": "C0050",
-      "title": "51单片机出租车计费设计 1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 93
-    },
-    {
-      "id": "C系列51单片机::C0049",
-      "code": "C0049",
-      "title": "51单片机汽车智能灯光控制系统 AES 0",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 94
-    },
-    {
-      "id": "C系列51单片机::C0048",
-      "code": "C0048",
-      "title": "51单片机排队叫号系统 1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 95
-    },
-    {
-      "id": "C系列51单片机::C0047",
-      "code": "C0047",
-      "title": "51单片机病床呼叫(24位)系统_数码管显示 1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "医疗健康",
-        "显示与交互"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 96
-    },
-    {
-      "id": "C系列51单片机::C0044",
-      "code": "C0044",
+      "id": "C系列51单片机::C009",
+      "code": "C009",
       "title": "51单片机甲醛浓度检测 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3402,25 +2733,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 97
     },
     {
-      "id": "C系列51单片机::C0043",
-      "code": "C0043",
+      "id": "C系列51单片机::C010",
+      "code": "C010",
       "title": "51单片机智能加湿器控制系统 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3435,25 +2754,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 98
     },
     {
-      "id": "C系列51单片机::C0042",
-      "code": "C0042",
+      "id": "C系列51单片机::C011",
+      "code": "C011",
       "title": "51单片机多路温度检测",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3468,25 +2775,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 99
     },
     {
-      "id": "C系列51单片机::C0040",
-      "code": "C0040",
+      "id": "C系列51单片机::C012",
+      "code": "C012",
       "title": "51单片机智能家居监控系统(煤气火灾烟雾防闯入) 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3504,25 +2799,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 100
     },
     {
-      "id": "C系列51单片机::C0039",
-      "code": "C0039",
+      "id": "C系列51单片机::C013",
+      "code": "C013",
       "title": "51单片机智能家居环境检测 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3538,25 +2821,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 101
     },
     {
-      "id": "C系列51单片机::C0038",
-      "code": "C0038",
+      "id": "C系列51单片机::C014",
+      "code": "C014",
       "title": "51单片机智能家居空气质量监控 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3572,58 +2843,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 102
     },
     {
-      "id": "C系列51单片机::C0036",
-      "code": "C0036",
-      "title": "51单片机7键电子琴音乐播放器 1",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "音频语音"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 103
-    },
-    {
-      "id": "C系列51单片机::C0035",
-      "code": "C0035",
+      "id": "C系列51单片机::C016",
+      "code": "C016",
       "title": "51单片机LCD1602矩阵键盘密码锁 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3641,25 +2867,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 104
     },
     {
-      "id": "C系列51单片机::C0033",
-      "code": "C0033",
+      "id": "C系列51单片机::C017",
+      "code": "C017",
       "title": "51单片机电子秤 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3674,25 +2888,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 105
     },
     {
-      "id": "C系列51单片机::C0031",
-      "code": "C0031",
+      "id": "C系列51单片机::C018",
+      "code": "C018",
       "title": "51单片机酒精浓度检测仪  1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3707,58 +2909,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 106
     },
     {
-      "id": "C系列51单片机::C0018",
-      "code": "C0018",
-      "title": "51单片机轮胎胎压监测系统-压力传感器 AES 0",
-      "series": "C系列51单片机",
-      "mcuFamily": "51单片机",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 107
-    },
-    {
-      "id": "C系列51单片机::C0017",
-      "code": "C0017",
+      "id": "C系列51单片机::C020",
+      "code": "C020",
       "title": "51单片机的火灾检测设计1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3773,25 +2930,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 108
     },
     {
-      "id": "C系列51单片机::C0010",
-      "code": "C0010",
+      "id": "C系列51单片机::C021",
+      "code": "C021",
       "title": "51单片机步进电机1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3808,25 +2953,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 109
     },
     {
-      "id": "C系列51单片机::C0009",
-      "code": "C0009",
+      "id": "C系列51单片机::C022",
+      "code": "C022",
       "title": "51单片机的多路温度检测调节串口传输系统 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3841,25 +2974,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 110
     },
     {
-      "id": "C系列51单片机::C0008",
-      "code": "C0008",
+      "id": "C系列51单片机::C023",
+      "code": "C023",
       "title": "51单片机的多路温度采集控制1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3874,25 +2995,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 111
     },
     {
-      "id": "C系列51单片机::C0005",
-      "code": "C0005",
+      "id": "C系列51单片机::C024",
+      "code": "C024",
       "title": "51单片机步进电机控速 1",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3909,25 +3018,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 112
     },
     {
-      "id": "C系列51单片机::C0004",
-      "code": "C0004",
+      "id": "C系列51单片机::C025",
+      "code": "C025",
       "title": "51单片机篮球赛计时计分器 AES 0",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3942,25 +3039,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 113
     },
     {
-      "id": "C系列51单片机::C0002",
-      "code": "C0002",
+      "id": "C系列51单片机::C026",
+      "code": "C026",
       "title": "51单片机电子钟万年历",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -3975,25 +3060,13 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 114
     },
     {
-      "id": "C系列51单片机::C0001",
-      "code": "C0001",
+      "id": "C系列51单片机::C027",
+      "code": "C027",
       "title": "51单片机电子钟闹钟 AES 0",
       "series": "C系列51单片机",
       "mcuFamily": "51单片机",
@@ -4008,27 +3081,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 115
     },
     {
-      "id": "C系列::C0069",
+      "id": "S系列STM32单片机::C0069",
       "code": "C0069",
       "title": "基于STM32汽车温度空调控制系统 1",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4041,27 +3102,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 116
     },
     {
-      "id": "C系列::C0068",
+      "id": "其他系列::C0068",
       "code": "C0068",
       "title": "大功率直流电机驱动模块设计方案  0",
-      "series": "C系列",
+      "series": "其他系列",
       "mcuFamily": "综合与其他",
       "mcuModel": "",
       "usages": [
@@ -4076,27 +3125,36 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 117
     },
     {
-      "id": "C系列::C0067",
+      "id": "S系列STM32单片机::C0067",
       "code": "C0067",
       "title": "基于STM32F103智能垃圾桶 1",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "STM32F103",
+      "usages": [
+        "智能家居"
+      ],
+      "modules": [],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 118
+    },
+    {
+      "id": "S系列STM32单片机::S089",
+      "code": "S089",
+      "title": "基于STM32F103智能垃圾桶 1",
+      "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "STM32F103",
       "usages": [
@@ -4117,19 +3175,36 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 118
     },
     {
-      "id": "C系列::C0066",
+      "id": "S系列STM32单片机::C0066",
       "code": "C0066",
       "title": "基于STM32手势识别智能家居系统 1",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "智能家居"
+      ],
+      "modules": [],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 119
+    },
+    {
+      "id": "S系列STM32单片机::S090",
+      "code": "S090",
+      "title": "基于STM32手势识别智能家居系统 1",
+      "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4150,19 +3225,40 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 119
     },
     {
-      "id": "C系列::C0065",
+      "id": "S系列STM33单片机::C0065",
       "code": "C0065",
       "title": "基于STM32喂食器-光照-高亮-wifi-ULN2003 1",
-      "series": "C系列",
+      "series": "S系列STM33单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "环境监测",
+        "智能家居",
+        "物联网"
+      ],
+      "modules": [
+        "WiFi通信模块"
+      ],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 120
+    },
+    {
+      "id": "S系列STM33单片机::S091",
+      "code": "S091",
+      "title": "基于STM32喂食器-光照-高亮-wifi-ULN2003 1",
+      "series": "S系列STM33单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4187,19 +3283,38 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 120
     },
     {
-      "id": "C系列::C0064",
+      "id": "S系列STM34单片机::C0064",
       "code": "C0064",
       "title": "基于STM32智能蓝牙APP定时开关插座喂食器药盒 1",
-      "series": "C系列",
+      "series": "S系列STM34单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "智能家居"
+      ],
+      "modules": [
+        "蓝牙模块"
+      ],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 121
+    },
+    {
+      "id": "S系列STM34单片机::S092",
+      "code": "S092",
+      "title": "基于STM32智能蓝牙APP定时开关插座喂食器药盒 1",
+      "series": "S系列STM34单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4222,19 +3337,36 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 121
     },
     {
-      "id": "C系列::C0063",
+      "id": "S系列STM35单片机::C0063",
       "code": "C0063",
       "title": "基于STM32智能公交车地铁语音报站器系统 1",
-      "series": "C系列",
+      "series": "S系列STM35单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "音频语音"
+      ],
+      "modules": [],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 122
+    },
+    {
+      "id": "S系列STM35单片机::S093",
+      "code": "S093",
+      "title": "基于STM32智能公交车地铁语音报站器系统 1",
+      "series": "S系列STM35单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4255,19 +3387,38 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 122
     },
     {
-      "id": "C系列::C0062",
+      "id": "S系列STM36单片机::C0062",
       "code": "C0062",
       "title": "基于STM32酒精检测防酒驾系统酒精报警器 1",
-      "series": "C系列",
+      "series": "S系列STM36单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "安防报警"
+      ],
+      "modules": [
+        "蜂鸣器"
+      ],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 123
+    },
+    {
+      "id": "S系列STM36单片机::S094",
+      "code": "S094",
+      "title": "基于STM32酒精检测防酒驾系统酒精报警器 1",
+      "series": "S系列STM36单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4290,19 +3441,38 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 123
     },
     {
-      "id": "C系列::C0061",
+      "id": "S系列STM37单片机::C0061",
       "code": "C0061",
       "title": "基于STM32手机WIFI无线APP控灯亮灭亮度系统 1",
-      "series": "C系列",
+      "series": "S系列STM37单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "物联网"
+      ],
+      "modules": [
+        "WiFi通信模块"
+      ],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 124
+    },
+    {
+      "id": "S系列STM37单片机::S095",
+      "code": "S095",
+      "title": "基于STM32手机WIFI无线APP控灯亮灭亮度系统 1",
+      "series": "S系列STM37单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4325,19 +3495,38 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 124
     },
     {
-      "id": "C系列::C0060",
+      "id": "S系列STM38单片机::C0060",
       "code": "C0060",
       "title": "基于STM32射频RFID停车收费系统 1",
-      "series": "C系列",
+      "series": "S系列STM38单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "智能交通"
+      ],
+      "modules": [
+        "RFID模块"
+      ],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 125
+    },
+    {
+      "id": "S系列STM38单片机::S096",
+      "code": "S096",
+      "title": "基于STM32射频RFID停车收费系统 1",
+      "series": "S系列STM38单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4360,19 +3549,15 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 125
     },
     {
-      "id": "C系列::C0059",
+      "id": "S系列STM39单片机::C0059",
       "code": "C0059",
       "title": "基于STM32电子密码锁 1",
-      "series": "C系列",
+      "series": "S系列STM39单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4385,27 +3570,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 126
     },
     {
-      "id": "C系列::C0058",
-      "code": "C0058",
-      "title": "基于STM32人脸识别系统 1",
-      "series": "C系列",
+      "id": "S系列STM39单片机::S097",
+      "code": "S097",
+      "title": "基于STM32电子密码锁 1",
+      "series": "S系列STM39单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4426,10 +3599,56 @@
         {
           "label": "硬件实物+配套硬件代码",
           "price": 200
+        }
+      ],
+      "sort": 126
+    },
+    {
+      "id": "S系列STM32单片机::C0058",
+      "code": "C0058",
+      "title": "基于STM32人脸识别系统 1",
+      "series": "S系列STM32单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "综合应用"
+      ],
+      "modules": [],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
+        }
+      ],
+      "sort": 127
+    },
+    {
+      "id": "S系列STM32单片机::S098",
+      "code": "S098",
+      "title": "基于STM32人脸识别系统 1",
+      "series": "S系列STM32单片机",
+      "mcuFamily": "STM32",
+      "mcuModel": "",
+      "usages": [
+        "综合应用"
+      ],
+      "modules": [],
+      "description": "",
+      "keywords": [],
+      "prices": [
+        {
+          "label": "仿真+仿真代码",
+          "price": 200
         },
         {
-          "label": "论文",
-          "price": 400
+          "label": "原理图+PCB设计",
+          "price": 100
+        },
+        {
+          "label": "硬件实物+配套硬件代码",
+          "price": 200
         }
       ],
       "sort": 127
@@ -4453,27 +3672,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 128
     },
     {
-      "id": "C系列::C0053",
+      "id": "S系列STM32单片机::C0053",
       "code": "C0053",
       "title": "基于STM32物联网WiFi智能家居控制系统",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4489,27 +3696,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 129
     },
     {
-      "id": "C系列::C0029",
+      "id": "S系列STM33单片机::C0029",
       "code": "C0029",
       "title": "基于STM32模拟电磁炮设计",
-      "series": "C系列",
+      "series": "S系列STM33单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4522,27 +3717,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 130
     },
     {
-      "id": "C系列::C0028",
+      "id": "S系列STM34单片机::C0028",
       "code": "C0028",
       "title": "基于STM32单片机Labview空气质量监测",
-      "series": "C系列",
+      "series": "S系列STM34单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4555,27 +3738,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 131
     },
     {
-      "id": "C系列::C0027",
+      "id": "S系列STM35单片机::C0027",
       "code": "C0027",
       "title": "基于STM32物联网智能鱼缸智能家居系统",
-      "series": "C系列",
+      "series": "S系列STM35单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4591,64 +3762,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 132
     },
     {
-      "id": "C系列::C0025",
-      "code": "C0025",
-      "title": "基于STM32老人防跌倒报警GSM短信GPS定位设计",
-      "series": "C系列",
-      "mcuFamily": "STM32",
-      "mcuModel": "",
-      "usages": [
-        "安防报警"
-      ],
-      "modules": [
-        "GPS定位模块",
-        "GSM通信模块",
-        "蜂鸣器"
-      ],
-      "description": "",
-      "keywords": [],
-      "prices": [
-        {
-          "label": "仿真+仿真代码",
-          "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
-        }
-      ],
-      "sort": 133
-    },
-    {
-      "id": "C系列::C0024",
+      "id": "S系列STM37单片机::C0024",
       "code": "C0024",
       "title": "51单片机的交流电流检测系统设计",
-      "series": "C系列",
+      "series": "S系列STM37单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4661,27 +3783,15 @@
         {
           "label": "仿真+仿真代码",
           "price": 200
-        },
-        {
-          "label": "原理图+PCB设计",
-          "price": 100
-        },
-        {
-          "label": "硬件实物+配套硬件代码",
-          "price": 200
-        },
-        {
-          "label": "论文",
-          "price": 400
         }
       ],
       "sort": 134
     },
     {
-      "id": "C系列::C0023",
+      "id": "S系列STM38单片机::C0023",
       "code": "C0023",
       "title": "基于STM32紫外线强度检测仪器蜂鸣器报警",
-      "series": "C系列",
+      "series": "S系列STM38单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4696,10 +3806,10 @@
       "sort": 135
     },
     {
-      "id": "C系列::C0022",
+      "id": "S系列STM39单片机::C0022",
       "code": "C0022",
       "title": "基于STM32智能充电桩计费系统的设计",
-      "series": "C系列",
+      "series": "S系列STM39单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4712,10 +3822,10 @@
       "sort": 136
     },
     {
-      "id": "C系列::C0021",
+      "id": "S系列STM40单片机::C0021",
       "code": "C0021",
       "title": "基于STM32智能跟随小车_红外遥控",
-      "series": "C系列",
+      "series": "S系列STM40单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4744,22 +3854,6 @@
       "sort": 138
     },
     {
-      "id": "C系列::C0016",
-      "code": "C0016",
-      "title": "基于STM32与ATT7022E多功能电力监测仪电路方案",
-      "series": "C系列",
-      "mcuFamily": "STM32",
-      "mcuModel": "",
-      "usages": [
-        "综合应用"
-      ],
-      "modules": [],
-      "description": "",
-      "keywords": [],
-      "prices": [],
-      "sort": 139
-    },
-    {
       "id": "C系列::C0015",
       "code": "C0015",
       "title": "51单片机垃圾箱自动分类加料机快递物流分拣器系统设计",
@@ -4776,10 +3870,10 @@
       "sort": 140
     },
     {
-      "id": "C系列::C0014",
+      "id": "S系列STM32单片机::C0014",
       "code": "C0014",
       "title": "三电极体系 弱电流检测",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
       "mcuFamily": "综合与其他",
       "mcuModel": "",
       "usages": [
@@ -4808,10 +3902,10 @@
       "sort": 142
     },
     {
-      "id": "C系列::C0012",
+      "id": "S系列STM32单片机::C0012",
       "code": "C0012",
       "title": "STM32三相SPWM逆变电源设计",
-      "series": "C系列",
+      "series": "S系列STM32单片机",
       "mcuFamily": "STM32",
       "mcuModel": "",
       "usages": [
@@ -4824,10 +3918,10 @@
       "sort": 143
     },
     {
-      "id": "P系列普中开发板可用::P01",
+      "id": "P系列普中开发板::P01",
       "code": "P01",
       "title": "51单片机的温度测量报警设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4844,10 +3938,10 @@
       "sort": 144
     },
     {
-      "id": "P系列普中开发板可用::P02",
+      "id": "P系列普中开发板::P02",
       "code": "P02",
       "title": "51单片机直流电机加减速(风扇控制)",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4863,10 +3957,10 @@
       "sort": 145
     },
     {
-      "id": "P系列普中开发板可用::P03",
+      "id": "P系列普中开发板::P03",
       "code": "P03",
       "title": "51单片机电子钟闹钟_数码管显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4879,10 +3973,10 @@
       "sort": 146
     },
     {
-      "id": "P系列普中开发板可用::P04",
+      "id": "P系列普中开发板::P04",
       "code": "P04",
       "title": "51单片机的简易计算器_数码管",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4895,10 +3989,10 @@
       "sort": 147
     },
     {
-      "id": "P系列普中开发板可用::P05",
+      "id": "P系列普中开发板::P05",
       "code": "P05",
       "title": "51单片机的简易计算器_LCD1602显示",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4914,10 +4008,10 @@
       "sort": 148
     },
     {
-      "id": "P系列普中开发板可用::P06",
+      "id": "P系列普中开发板::P06",
       "code": "P06",
       "title": "51单片机的电子钟万年历_LCD1602显示",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4933,10 +4027,10 @@
       "sort": 149
     },
     {
-      "id": "P系列普中开发板可用::P07",
+      "id": "P系列普中开发板::P07",
       "code": "P07",
       "title": "51单片机的八位抢答器设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4949,10 +4043,10 @@
       "sort": 150
     },
     {
-      "id": "P系列普中开发板可用::P08",
+      "id": "P系列普中开发板::P08",
       "code": "P08",
       "title": "51单片机音乐盒LCD1602显示",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4969,10 +4063,10 @@
       "sort": 151
     },
     {
-      "id": "P系列普中开发板可用::P09",
+      "id": "P系列普中开发板::P09",
       "code": "P09",
       "title": "51单片机的篮球计分器计时LCD1602",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -4988,10 +4082,10 @@
       "sort": 152
     },
     {
-      "id": "P系列普中开发板可用::P10",
+      "id": "P系列普中开发板::P10",
       "code": "P10",
       "title": "51单片机的简易密码锁数码管显示",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5004,10 +4098,10 @@
       "sort": 153
     },
     {
-      "id": "P系列普中开发板可用::P11",
+      "id": "P系列普中开发板::P11",
       "code": "P11",
       "title": "51单片机的温度报警器_LCD1602上下限",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5026,10 +4120,10 @@
       "sort": 154
     },
     {
-      "id": "P系列普中开发板可用::P12",
+      "id": "P系列普中开发板::P12",
       "code": "P12",
       "title": "51单片机的电子秒表数码管显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5042,10 +4136,10 @@
       "sort": 155
     },
     {
-      "id": "P系列普中开发板可用::P13",
+      "id": "P系列普中开发板::P13",
       "code": "P13",
       "title": "51单片机的7人多数投票表决器设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5058,10 +4152,10 @@
       "sort": 156
     },
     {
-      "id": "P系列普中开发板可用::P14",
+      "id": "P系列普中开发板::P14",
       "code": "P14",
       "title": "51单片机的密码锁LCD1602液晶显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5077,10 +4171,10 @@
       "sort": 157
     },
     {
-      "id": "P系列普中开发板可用::P15",
+      "id": "P系列普中开发板::P15",
       "code": "P15",
       "title": "51单片机的DHT11温湿度测量报警",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5099,10 +4193,10 @@
       "sort": 158
     },
     {
-      "id": "P系列普中开发板可用::P16",
+      "id": "P系列普中开发板::P16",
       "code": "P16",
       "title": "51单片机的8*8点阵滚动显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5117,10 +4211,10 @@
       "sort": 159
     },
     {
-      "id": "P系列普中开发板可用::P17",
+      "id": "P系列普中开发板::P17",
       "code": "P17",
       "title": "51单片机电子门铃设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5133,10 +4227,10 @@
       "sort": 160
     },
     {
-      "id": "P系列普中开发板可用::P18",
+      "id": "P系列普中开发板::P18",
       "code": "P18",
       "title": "51单片机秒表整点报时倒计时电子钟万年历仿真设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5149,10 +4243,10 @@
       "sort": 161
     },
     {
-      "id": "P系列普中开发板可用::P19",
+      "id": "P系列普中开发板::P19",
       "code": "P19",
       "title": "51单片机的四位抢答器数码管仿真设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5165,10 +4259,10 @@
       "sort": 162
     },
     {
-      "id": "P系列普中开发板可用::P20",
+      "id": "P系列普中开发板::P20",
       "code": "P20",
       "title": "51单片机的超声波测距温度补偿LCD显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5186,10 +4280,10 @@
       "sort": 163
     },
     {
-      "id": "P系列普中开发板可用::P21",
+      "id": "P系列普中开发板::P21",
       "code": "P21",
       "title": "51单片机电子钟闹钟LCD1602显示12-24时制切换",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5205,10 +4299,10 @@
       "sort": 164
     },
     {
-      "id": "P系列普中开发板可用::P22",
+      "id": "P系列普中开发板::P22",
       "code": "P22",
       "title": "51单片机电子钟闹钟数码管显示12-24时制切换",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5221,10 +4315,10 @@
       "sort": 165
     },
     {
-      "id": "P系列普中开发板可用::P23",
+      "id": "P系列普中开发板::P23",
       "code": "P23",
       "title": "51单片机的矩阵按键电子琴",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5237,10 +4331,10 @@
       "sort": 166
     },
     {
-      "id": "P系列普中开发板可用::P24",
+      "id": "P系列普中开发板::P24",
       "code": "P24",
       "title": "51单片机贪吃蛇游戏设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5253,10 +4347,10 @@
       "sort": 167
     },
     {
-      "id": "P系列普中开发板可用::P25",
+      "id": "P系列普中开发板::P25",
       "code": "P25",
       "title": "51单片机LCD1602显示广告牌设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5272,10 +4366,10 @@
       "sort": 168
     },
     {
-      "id": "P系列普中开发板可用::P26",
+      "id": "P系列普中开发板::P26",
       "code": "P26",
       "title": "51单片机8x8LED点阵广告牌设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5290,10 +4384,10 @@
       "sort": 169
     },
     {
-      "id": "P系列普中开发板可用::P27",
+      "id": "P系列普中开发板::P27",
       "code": "P27",
       "title": "51单片机双机串口通信LCD1602显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5309,10 +4403,10 @@
       "sort": 170
     },
     {
-      "id": "P系列普中开发板可用::P28",
+      "id": "P系列普中开发板::P28",
       "code": "P28",
       "title": "51单片机电子钟闹钟日期数码管显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5325,10 +4419,10 @@
       "sort": 171
     },
     {
-      "id": "P系列普中开发板可用::P29",
+      "id": "P系列普中开发板::P29",
       "code": "P29",
       "title": "51单片机模拟风扇控制数码管显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5342,10 +4436,10 @@
       "sort": 172
     },
     {
-      "id": "P系列普中开发板可用::P30",
+      "id": "P系列普中开发板::P30",
       "code": "P30",
       "title": "51单片机电子钟闹钟带温度LCD显示设计",
-      "series": "P系列普中开发板可用",
+      "series": "P系列普中开发板",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5361,10 +4455,10 @@
       "sort": 173
     },
     {
-      "id": "S系列51单片机::02",
-      "code": "02",
+      "id": "L系列51单片机::L0000",
+      "code": "L0000",
       "title": "51单片机按键控制数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5377,10 +4471,10 @@
       "sort": 174
     },
     {
-      "id": "S系列51单片机::S0001",
-      "code": "S0001",
+      "id": "L系列51单片机::L0001",
+      "code": "L0001",
       "title": "51单片机简易计算器",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5393,10 +4487,10 @@
       "sort": 175
     },
     {
-      "id": "S系列51单片机::S0002",
-      "code": "S0002",
+      "id": "L系列51单片机::L0002",
+      "code": "L0002",
       "title": "51单片机0.01精度秒表99.99s",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5409,10 +4503,10 @@
       "sort": 176
     },
     {
-      "id": "S系列51单片机::S0003",
-      "code": "S0003",
+      "id": "L系列51单片机::L0003",
+      "code": "L0003",
       "title": "51单片机0.001s精度秒表9.999s",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5425,10 +4519,10 @@
       "sort": 177
     },
     {
-      "id": "S系列51单片机::S0004",
-      "code": "S0004",
+      "id": "L系列51单片机::L0004",
+      "code": "L0004",
       "title": "51单片机超声波测距带语音播报",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5444,10 +4538,10 @@
       "sort": 178
     },
     {
-      "id": "S系列51单片机::S0005",
-      "code": "S0005",
+      "id": "L系列51单片机::L0005",
+      "code": "L0005",
       "title": "51单片机简易数字电压表_数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5461,10 +4555,10 @@
       "sort": 179
     },
     {
-      "id": "S系列51单片机::S0006",
+      "id": "L系列51单片机::S0006",
       "code": "S0006",
       "title": "51单片机数字电压表_LCD显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5480,10 +4574,10 @@
       "sort": 180
     },
     {
-      "id": "S系列51单片机::S0007",
+      "id": "L系列51单片机::S0007",
       "code": "S0007",
       "title": "51单片机停车场",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5496,10 +4590,10 @@
       "sort": 181
     },
     {
-      "id": "S系列51单片机::S0008",
+      "id": "L系列51单片机::S0008",
       "code": "S0008",
       "title": "51单片机温度报警器",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5515,10 +4609,10 @@
       "sort": 182
     },
     {
-      "id": "S系列51单片机::S0009",
+      "id": "L系列51单片机::S0009",
       "code": "S0009",
       "title": "51单片机数字温度传感器报警",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5534,10 +4628,10 @@
       "sort": 183
     },
     {
-      "id": "S系列51单片机::S0010",
+      "id": "L系列51单片机::S0010",
       "code": "S0010",
       "title": "51单片机温度控制调速风扇系统",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5551,10 +4645,10 @@
       "sort": 184
     },
     {
-      "id": "S系列51单片机::S0011",
+      "id": "L系列51单片机::S0011",
       "code": "S0011",
       "title": "51单片机DS18B20温控风扇",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5569,10 +4663,10 @@
       "sort": 185
     },
     {
-      "id": "S系列51单片机::S0012",
+      "id": "L系列51单片机::S0012",
       "code": "S0012",
       "title": "51单片机温度监控温度计DS18B20_可调上下限",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5587,10 +4681,10 @@
       "sort": 186
     },
     {
-      "id": "S系列51单片机::S0013",
+      "id": "L系列51单片机::S0013",
       "code": "S0013",
       "title": "51单片机温湿度控制器_可调",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5605,10 +4699,10 @@
       "sort": 187
     },
     {
-      "id": "S系列51单片机::S0014",
+      "id": "L系列51单片机::S0014",
       "code": "S0014",
       "title": "51单片机DS18B20温度测量",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5624,10 +4718,10 @@
       "sort": 188
     },
     {
-      "id": "S系列51单片机::S0015",
+      "id": "L系列51单片机::S0015",
       "code": "S0015",
       "title": "51单片机信号发生器",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5640,10 +4734,10 @@
       "sort": 189
     },
     {
-      "id": "S系列51单片机::S0016",
+      "id": "L系列51单片机::S0016",
       "code": "S0016",
       "title": "51单片机正向计时秒表00-99",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5656,10 +4750,10 @@
       "sort": 190
     },
     {
-      "id": "S系列51单片机::S0017",
+      "id": "L系列51单片机::S0017",
       "code": "S0017",
       "title": "51单片机反向计时秒表99-00",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5672,10 +4766,10 @@
       "sort": 191
     },
     {
-      "id": "S系列51单片机::S0018",
+      "id": "L系列51单片机::S0018",
       "code": "S0018",
       "title": "51单片机轮胎胎压气压监测_数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5688,10 +4782,10 @@
       "sort": 192
     },
     {
-      "id": "S系列51单片机::S0019",
+      "id": "L系列51单片机::S0019",
       "code": "S0019",
       "title": "51单片机智能导盲手杖_超声波测距",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5706,10 +4800,10 @@
       "sort": 193
     },
     {
-      "id": "S系列51单片机::S0020",
+      "id": "L系列51单片机::S0020",
       "code": "S0020",
       "title": "TCP7107数字式温度计（纯硬件仿真 无代码）",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5722,10 +4816,10 @@
       "sort": 194
     },
     {
-      "id": "S系列51单片机::S0021",
+      "id": "L系列51单片机::S0021",
       "code": "S0021",
       "title": "51单片机手动计步器设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5738,10 +4832,10 @@
       "sort": 195
     },
     {
-      "id": "S系列51单片机::S0022",
+      "id": "L系列51单片机::S0022",
       "code": "S0022",
       "title": "51单片机DTH11温湿度测量仪",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5757,10 +4851,10 @@
       "sort": 196
     },
     {
-      "id": "S系列51单片机::S0023",
+      "id": "L系列51单片机::S0023",
       "code": "S0023",
       "title": "51单片机热敏电阻PT100热电偶AD转换设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5773,10 +4867,10 @@
       "sort": 197
     },
     {
-      "id": "S系列51单片机::S0024",
+      "id": "L系列51单片机::S0024",
       "code": "S0024",
       "title": "51单片机双机串口通信",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5789,10 +4883,10 @@
       "sort": 198
     },
     {
-      "id": "S系列51单片机::S0025",
+      "id": "L系列51单片机::S0025",
       "code": "S0025",
       "title": "51单片机全自动洗衣机",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5805,10 +4899,10 @@
       "sort": 199
     },
     {
-      "id": "S系列51单片机::S0026",
+      "id": "L系列51单片机::S0026",
       "code": "S0026",
       "title": "51单片机的电子血压温度计(健康监测系统)",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5822,10 +4916,10 @@
       "sort": 200
     },
     {
-      "id": "S系列51单片机::S0027",
+      "id": "L系列51单片机::S0027",
       "code": "S0027",
       "title": "51单片机多层电梯(1-16层)运行仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5838,10 +4932,10 @@
       "sort": 201
     },
     {
-      "id": "S系列51单片机::S0028",
+      "id": "L系列51单片机::S0028",
       "code": "S0028",
       "title": "51单片机的DS12C887万年历农历仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5854,10 +4948,10 @@
       "sort": 202
     },
     {
-      "id": "S系列51单片机::S0029",
+      "id": "L系列51单片机::S0029",
       "code": "S0029",
       "title": "51单片机的宠物自动喂食投料控制仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5870,10 +4964,10 @@
       "sort": 203
     },
     {
-      "id": "S系列51单片机::S0030",
+      "id": "L系列51单片机::S0030",
       "code": "S0030",
       "title": "51单片机的音乐盒设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5886,10 +4980,10 @@
       "sort": 204
     },
     {
-      "id": "S系列51单片机::S0031",
+      "id": "L系列51单片机::S0031",
       "code": "S0031",
       "title": "51单片机的PWM控制直流电机仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5904,10 +4998,10 @@
       "sort": 205
     },
     {
-      "id": "S系列51单片机::S0032",
+      "id": "L系列51单片机::S0032",
       "code": "S0032",
       "title": "51单片机空气质量PM2.5监测仪",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5920,10 +5014,10 @@
       "sort": 206
     },
     {
-      "id": "S系列51单片机::S0033",
+      "id": "L系列51单片机::S0033",
       "code": "S0033",
       "title": "51单片机七人多数表决器仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5936,10 +5030,10 @@
       "sort": 207
     },
     {
-      "id": "S系列51单片机::S0034",
+      "id": "L系列51单片机::S0034",
       "code": "S0034",
       "title": "51单片机双机串口排队叫号数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5952,10 +5046,10 @@
       "sort": 208
     },
     {
-      "id": "S系列51单片机::S0035",
+      "id": "L系列51单片机::S0035",
       "code": "S0035",
       "title": "51单片机多路电压检测",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5968,10 +5062,10 @@
       "sort": 209
     },
     {
-      "id": "S系列51单片机::S0036",
+      "id": "L系列51单片机::S0036",
       "code": "S0036",
       "title": "51单片机简易出租车计价器",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -5984,10 +5078,10 @@
       "sort": 210
     },
     {
-      "id": "S系列51单片机::S0037",
+      "id": "L系列51单片机::S0037",
       "code": "S0037",
       "title": "51单片机简易电阻测量仪仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6000,10 +5094,10 @@
       "sort": 211
     },
     {
-      "id": "S系列51单片机::S0038",
+      "id": "L系列51单片机::S0038",
       "code": "S0038",
       "title": "51单片机简易电感测量仪仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6016,10 +5110,10 @@
       "sort": 212
     },
     {
-      "id": "S系列51单片机::S0039",
+      "id": "L系列51单片机::S0039",
       "code": "S0039",
       "title": "51单片机简易电容测量仪仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6032,10 +5126,10 @@
       "sort": 213
     },
     {
-      "id": "S系列51单片机::S0040",
+      "id": "L系列51单片机::S0040",
       "code": "S0040",
       "title": "51单片机RLC电阻电感电容测量仪仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6048,10 +5142,10 @@
       "sort": 214
     },
     {
-      "id": "S系列51单片机::S0041",
+      "id": "L系列51单片机::S0041",
       "code": "S0041",
       "title": "51单片机简易数字万用表(电阻电流电压测量)仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6064,10 +5158,10 @@
       "sort": 215
     },
     {
-      "id": "S系列51单片机::S0042",
+      "id": "L系列51单片机::S0042",
       "code": "S0042",
       "title": "51单片机智能电风扇模拟控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6080,10 +5174,10 @@
       "sort": 216
     },
     {
-      "id": "S系列51单片机::S0043",
+      "id": "L系列51单片机::S0043",
       "code": "S0043",
       "title": "51单片机SHT11温湿度LCD12864显示报警仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6102,10 +5196,10 @@
       "sort": 217
     },
     {
-      "id": "S系列51单片机::S0044",
+      "id": "L系列51单片机::S0044",
       "code": "S0044",
       "title": "51单片机DHT11温湿度控制LCD1602系统仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6124,10 +5218,10 @@
       "sort": 218
     },
     {
-      "id": "S系列51单片机::S0045",
+      "id": "L系列51单片机::S0045",
       "code": "S0045",
       "title": "51单片机简易热水器控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6140,10 +5234,10 @@
       "sort": 219
     },
     {
-      "id": "S系列51单片机::S0046",
+      "id": "L系列51单片机::S0046",
       "code": "S0046",
       "title": "51单片机简易电子钟闹钟_8位数码管仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6156,10 +5250,10 @@
       "sort": 220
     },
     {
-      "id": "S系列51单片机::S0047",
+      "id": "L系列51单片机::S0047",
       "code": "S0047",
       "title": "51单片机电子钟整点报时_6位数码管仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6172,10 +5266,10 @@
       "sort": 221
     },
     {
-      "id": "S系列51单片机::S0048",
+      "id": "L系列51单片机::S0048",
       "code": "S0048",
       "title": "51单片机简易篮球计分器数码管显示仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6188,10 +5282,10 @@
       "sort": 222
     },
     {
-      "id": "S系列51单片机::S0049",
+      "id": "L系列51单片机::S0049",
       "code": "S0049",
       "title": "51单片机简易计算器(加减乘除)数码管显示仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6204,10 +5298,10 @@
       "sort": 223
     },
     {
-      "id": "S系列51单片机::S0050",
+      "id": "L系列51单片机::S0050",
       "code": "S0050",
       "title": "51单片机智能台灯控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6220,10 +5314,10 @@
       "sort": 224
     },
     {
-      "id": "S系列51单片机::S0051",
+      "id": "L系列51单片机::S0051",
       "code": "S0051",
       "title": "51单片机DS1302万年历时钟温度12864显示仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6237,10 +5331,10 @@
       "sort": 225
     },
     {
-      "id": "S系列51单片机::S0052",
+      "id": "L系列51单片机::S0052",
       "code": "S0052",
       "title": "51单片机光感自动路灯控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6253,10 +5347,10 @@
       "sort": 226
     },
     {
-      "id": "S系列51单片机::S0053",
+      "id": "L系列51单片机::S0053",
       "code": "S0053",
       "title": "51单片机秒表整点报时倒计时电子钟万年历仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6269,10 +5363,10 @@
       "sort": 227
     },
     {
-      "id": "S系列51单片机::S0054",
+      "id": "L系列51单片机::S0054",
       "code": "S0054",
       "title": "51单片机双机红外遥控发射接收仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6285,10 +5379,10 @@
       "sort": 228
     },
     {
-      "id": "S系列51单片机::S0055",
+      "id": "L系列51单片机::S0055",
       "code": "S0055",
       "title": "51单片机可调幅调频波形信号发生器仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6301,10 +5395,10 @@
       "sort": 229
     },
     {
-      "id": "S系列51单片机::S0056",
+      "id": "L系列51单片机::S0056",
       "code": "S0056",
       "title": "51单片机锅炉监控系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6317,10 +5411,10 @@
       "sort": 230
     },
     {
-      "id": "S系列51单片机::S0057",
+      "id": "L系列51单片机::S0057",
       "code": "S0057",
       "title": "51单片机电子钟闹钟温度LCD液晶显示设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6336,10 +5430,10 @@
       "sort": 231
     },
     {
-      "id": "S系列51单片机::S0058",
+      "id": "L系列51单片机::S0058",
       "code": "S0058",
       "title": "51单片机篮球计时计分器LCD1602液晶",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6355,10 +5449,10 @@
       "sort": 232
     },
     {
-      "id": "S系列51单片机::S0059",
+      "id": "L系列51单片机::S0059",
       "code": "S0059",
       "title": "51单片机PCF8591电压表数码管设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6371,10 +5465,10 @@
       "sort": 233
     },
     {
-      "id": "S系列51单片机::S0060",
+      "id": "L系列51单片机::S0060",
       "code": "S0060",
       "title": "51单片机PCF8591电压表LCD1602液晶",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6391,10 +5485,10 @@
       "sort": 234
     },
     {
-      "id": "S系列51单片机::S0061",
+      "id": "L系列51单片机::S0061",
       "code": "S0061",
       "title": "51单片机电子钟温度检测数码显示设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6408,10 +5502,10 @@
       "sort": 235
     },
     {
-      "id": "S系列51单片机::S0062",
+      "id": "L系列51单片机::S0062",
       "code": "S0062",
       "title": "51单片机步进电机加减速正反转数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6427,10 +5521,10 @@
       "sort": 236
     },
     {
-      "id": "S系列51单片机::S0063",
+      "id": "L系列51单片机::S0063",
       "code": "S0063",
       "title": "51单片机步进电机节拍步数正反转LCD1602显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6448,10 +5542,10 @@
       "sort": 237
     },
     {
-      "id": "S系列51单片机::S0064",
+      "id": "L系列51单片机::S0064",
       "code": "S0064",
       "title": "51单片机水位监测控制报警仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6466,10 +5560,10 @@
       "sort": 238
     },
     {
-      "id": "S系列51单片机::S0065",
+      "id": "L系列51单片机::S0065",
       "code": "S0065",
       "title": "51单片机音乐盒LCD1602显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6486,10 +5580,10 @@
       "sort": 239
     },
     {
-      "id": "S系列51单片机::S0066",
+      "id": "L系列51单片机::S0066",
       "code": "S0066",
       "title": "51单片机数字电流表数码管显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6503,10 +5597,10 @@
       "sort": 240
     },
     {
-      "id": "S系列51单片机::S0067",
+      "id": "L系列51单片机::S0067",
       "code": "S0067",
       "title": "51单片机烟雾报警器数码管仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6523,10 +5617,10 @@
       "sort": 241
     },
     {
-      "id": "S系列51单片机::S0068",
+      "id": "L系列51单片机::S0068",
       "code": "S0068",
       "title": "51单片机烟雾报警器LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6546,10 +5640,10 @@
       "sort": 242
     },
     {
-      "id": "S系列51单片机::S0069",
+      "id": "L系列51单片机::S0069",
       "code": "S0069",
       "title": "51单片机水质PH值浑浊度检测LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6565,10 +5659,10 @@
       "sort": 243
     },
     {
-      "id": "S系列51单片机::S0070",
+      "id": "L系列51单片机::S0070",
       "code": "S0070",
       "title": "51单片机风速测量仪报警仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6584,10 +5678,10 @@
       "sort": 244
     },
     {
-      "id": "S系列51单片机::S0071",
+      "id": "L系列51单片机::S0071",
       "code": "S0071",
       "title": "51单片机微波炉控制仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6600,10 +5694,10 @@
       "sort": 245
     },
     {
-      "id": "S系列51单片机::S0072",
+      "id": "L系列51单片机::S0072",
       "code": "S0072",
       "title": "51单片机数控电压源LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6620,10 +5714,10 @@
       "sort": 246
     },
     {
-      "id": "S系列51单片机::S0073",
+      "id": "L系列51单片机::S0073",
       "code": "S0073",
       "title": "51单片机一氧化碳(CO)报警器LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6641,10 +5735,10 @@
       "sort": 247
     },
     {
-      "id": "S系列51单片机::S0074",
+      "id": "L系列51单片机::S0074",
       "code": "S0074",
       "title": "51单片机多机串口通信仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6657,10 +5751,10 @@
       "sort": 248
     },
     {
-      "id": "S系列51单片机::S0075",
+      "id": "L系列51单片机::S0075",
       "code": "S0075",
       "title": "51单片机教室灯光全自动控制系统",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6673,10 +5767,10 @@
       "sort": 249
     },
     {
-      "id": "S系列51单片机::S0076",
+      "id": "L系列51单片机::S0076",
       "code": "S0076",
       "title": "51单片机篮球进攻24秒倒计时设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6689,10 +5783,10 @@
       "sort": 250
     },
     {
-      "id": "S系列51单片机::S0077",
+      "id": "L系列51单片机::S0077",
       "code": "S0077",
       "title": "51单片机洗衣机控制(强洗弱洗漂洗)设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6705,10 +5799,10 @@
       "sort": 251
     },
     {
-      "id": "S系列51单片机::S0078",
+      "id": "L系列51单片机::S0078",
       "code": "S0078",
       "title": "51单片机自行车测速里程码表设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6721,10 +5815,10 @@
       "sort": 252
     },
     {
-      "id": "S系列51单片机::S0079",
+      "id": "L系列51单片机::S0079",
       "code": "S0079",
       "title": "51单片机氢气报警器LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6742,10 +5836,10 @@
       "sort": 253
     },
     {
-      "id": "S系列51单片机::S0080",
+      "id": "L系列51单片机::S0080",
       "code": "S0080",
       "title": "51单片机智能鱼缸控制仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6758,10 +5852,10 @@
       "sort": 254
     },
     {
-      "id": "S系列51单片机::S0081",
+      "id": "L系列51单片机::S0081",
       "code": "S0081",
       "title": "51单片机输液点滴控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6774,10 +5868,10 @@
       "sort": 255
     },
     {
-      "id": "S系列51单片机::S0082",
+      "id": "L系列51单片机::S0082",
       "code": "S0082",
       "title": "51单片机电子钟闹钟12/24时制仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6790,10 +5884,10 @@
       "sort": 256
     },
     {
-      "id": "S系列51单片机::S0083",
+      "id": "L系列51单片机::S0083",
       "code": "S0083",
       "title": "51单片机电子秤LCD1602液晶仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6810,10 +5904,10 @@
       "sort": 257
     },
     {
-      "id": "S系列51单片机::S0084",
+      "id": "L系列51单片机::S0084",
       "code": "S0084",
       "title": "51单片机智能窗帘控制系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6826,10 +5920,10 @@
       "sort": 258
     },
     {
-      "id": "S系列51单片机::S0085",
+      "id": "L系列51单片机::S0085",
       "code": "S0085",
       "title": "51单片机空气质量监测LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6846,10 +5940,10 @@
       "sort": 259
     },
     {
-      "id": "S系列51单片机::S0086",
+      "id": "L系列51单片机::S0086",
       "code": "S0086",
       "title": "51单片机闭环直流电机测速调速仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6864,10 +5958,10 @@
       "sort": 260
     },
     {
-      "id": "S系列51单片机::S0087",
+      "id": "L系列51单片机::S0087",
       "code": "S0087",
       "title": "51单片机电子钟秒表LCD1602显示仿真",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6883,10 +5977,10 @@
       "sort": 261
     },
     {
-      "id": "S系列51单片机::S0088",
+      "id": "L系列51单片机::S0088",
       "code": "S0088",
       "title": "51单片机传送带调速计数仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6899,10 +5993,10 @@
       "sort": 262
     },
     {
-      "id": "S系列51单片机::S0089",
+      "id": "L系列51单片机::S0089",
       "code": "S0089",
       "title": "51单片机智能垃圾桶仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6915,10 +6009,10 @@
       "sort": 263
     },
     {
-      "id": "S系列51单片机::S0090",
+      "id": "L系列51单片机::S0090",
       "code": "S0090",
       "title": "51单片机音乐定时倒计时仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6931,10 +6025,10 @@
       "sort": 264
     },
     {
-      "id": "S系列51单片机::S0091",
+      "id": "L系列51单片机::S0091",
       "code": "S0091",
       "title": "51单片机电子门铃仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6947,10 +6041,10 @@
       "sort": 265
     },
     {
-      "id": "S系列51单片机::S0092",
+      "id": "L系列51单片机::S0092",
       "code": "S0092",
       "title": "51单片机冰箱控制系统设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6963,10 +6057,10 @@
       "sort": 266
     },
     {
-      "id": "S系列51单片机::S0093",
+      "id": "L系列51单片机::S0093",
       "code": "S0093",
       "title": "51单片机串口通信控制仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6979,10 +6073,10 @@
       "sort": 267
     },
     {
-      "id": "S系列51单片机::S0094",
+      "id": "L系列51单片机::S0094",
       "code": "S0094",
       "title": "51单片机智能晾衣架仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -6995,10 +6089,10 @@
       "sort": 268
     },
     {
-      "id": "S系列51单片机::S0095",
+      "id": "L系列51单片机::S0095",
       "code": "S0095",
       "title": "51单片机病床呼叫(64位病床)系统_LCD显示",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7014,10 +6108,10 @@
       "sort": 269
     },
     {
-      "id": "S系列51单片机::S0096",
+      "id": "L系列51单片机::S0096",
       "code": "S0096",
       "title": "51单片机煤气浓度检测报警器LCD1602仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7035,10 +6129,10 @@
       "sort": 270
     },
     {
-      "id": "S系列51单片机::S0097",
+      "id": "L系列51单片机::S0097",
       "code": "S0097",
       "title": "51单片机校园作息打铃系统仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7051,10 +6145,10 @@
       "sort": 271
     },
     {
-      "id": "S系列51单片机::S0098",
+      "id": "L系列51单片机::S0098",
       "code": "S0098",
       "title": "51单片机红外震动多功能防盗报警系统",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7069,10 +6163,10 @@
       "sort": 272
     },
     {
-      "id": "S系列51单片机::S0099",
+      "id": "L系列51单片机::S0099",
       "code": "S0099",
       "title": "51单片机温控水杯恒温杯仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7085,10 +6179,10 @@
       "sort": 273
     },
     {
-      "id": "S系列51单片机::S0100",
+      "id": "L系列51单片机::S0100",
       "code": "S0100",
       "title": "51单片机自动售货机仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7101,10 +6195,10 @@
       "sort": 274
     },
     {
-      "id": "S系列51单片机::S0101",
+      "id": "L系列51单片机::S0101",
       "code": "S0101",
       "title": "51单片机正负5V电压表仿真设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7117,10 +6211,10 @@
       "sort": 275
     },
     {
-      "id": "S系列51单片机::S0102",
+      "id": "L系列51单片机::S0102",
       "code": "S0102",
       "title": "51单片机八键电子琴设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7133,10 +6227,10 @@
       "sort": 276
     },
     {
-      "id": "S系列51单片机::S0103",
+      "id": "L系列51单片机::S0103",
       "code": "S0103",
       "title": "51单片机心率测量报警设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [
@@ -7153,10 +6247,10 @@
       "sort": 277
     },
     {
-      "id": "S系列51单片机::S0104",
+      "id": "L系列51单片机::S0104",
       "code": "S0104",
       "title": "STC15单片机交通灯_紧急+夜间模式",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "STC15",
       "usages": [
@@ -7169,10 +6263,10 @@
       "sort": 278
     },
     {
-      "id": "S系列51单片机::S0105",
+      "id": "L系列51单片机::S0105",
       "code": "S0105",
       "title": "51单片机DHT11温湿度烟雾报警器设计",
-      "series": "S系列51单片机",
+      "series": "L系列51单片机",
       "mcuFamily": "51单片机",
       "mcuModel": "",
       "usages": [

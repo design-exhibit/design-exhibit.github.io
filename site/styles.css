@@ -118,10 +118,16 @@ h1 em { color: var(--cyan); font-style: normal; }
 .price-options { margin-top: 16px; border-top: 1px solid var(--line); }
 .price-options summary { padding: 13px 0 2px; color: var(--cyan-dark); cursor: pointer; font-size: 12px; font-weight: 800; list-style-position: inside; }
 .price-list { display: grid; gap: 7px; margin-top: 10px; padding: 11px; border-radius: 10px; background: #f7fafb; }
-.price-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--muted); cursor: pointer; font-size: 12px; }
-.price-choice { min-width: 0; display: flex; align-items: center; gap: 8px; }
+.price-group-title { margin-top: 3px; color: var(--ink); font-size: 12px; font-weight: 800; }
+.price-group-title:not(:first-child) { margin-top: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+.price-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; color: var(--muted); cursor: pointer; font-size: 12px; }
+.price-choice { min-width: 0; flex: 1; display: flex; align-items: flex-start; gap: 8px; }
 .price-choice input { width: 16px; height: 16px; flex: 0 0 auto; margin: 0; accent-color: var(--cyan-dark); }
-.price-row strong { color: #8f570f; white-space: nowrap; }
+.price-option-copy { min-width: 0; line-height: 1.5; overflow-wrap: anywhere; }
+.price-option-title, .price-option-detail { display: block; }
+.price-option-title { color: var(--ink); font-weight: 750; }
+.price-option-detail { margin-top: 2px; color: #778698; font-size: 11px; }
+.price-row strong { flex: 0 0 auto; color: #8f570f; white-space: nowrap; }
 .price-total { display: block; margin-top: 10px; padding: 9px 11px; border-radius: 9px; color: #075f5b; background: #e9f7f5; font-size: 12px; font-weight: 850; }
 .quote-note-label { display: grid; gap: 6px; margin-top: 10px; color: var(--muted); font-size: 12px; font-weight: 700; }
 .quote-note-input { width: 100%; padding: 9px 11px; resize: vertical; border: 1px solid #c8d8df; border-radius: 9px; color: var(--ink); background: #fff; font: inherit; font-size: 12px; line-height: 1.55; }

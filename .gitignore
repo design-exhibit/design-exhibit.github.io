@@ -1,4 +1,5 @@
 .artifact-work/
+site/assets/generated/projects/
 node_modules/
 __pycache__/
 *.pyc

@@ -98,6 +98,13 @@ export function buildRequirementText(project, selectedPrices = [], note = "") {
   return result.join("\n");
 }
 
+export function projectImageEntries(project) {
+  return [
+    { label: "仿真图片", image: project.simulationImage },
+    { label: "实物图片", image: project.hardwareImage }
+  ].filter(({ image }) => image?.src);
+}
+
 function groupCounts(projects, selector) {
   const counts = new Map();
   for (const project of projects) {
@@ -114,19 +121,38 @@ function createProjectCard(project, exact = false) {
   if (exact) topMeta.append(element("span", "exact-badge", "精准匹配"));
   if (project.prices?.length) {
     topMeta.append(element("span", "project-price", priceSummary(project.prices)));
-  } else {
-    const consult = element("details", "price-consult");
-    consult.append(
-      element("summary", "project-price", "价格咨询"),
-      element("p", "price-consult-note", `该项目暂未录入公开价格，请提供项目编号 ${project.code || project.id} 咨询。`)
-    );
-    topMeta.append(consult);
   }
   top.append(topMeta);
   card.append(top, element("h3", "", project.title));
 
   const mcu = [project.mcuFamily, project.mcuModel].filter(Boolean).join(" / ");
   if (mcu) card.append(element("p", "project-mcu", mcu));
+
+  const images = projectImageEntries(project);
+  if (images.length) {
+    const media = element("div", "project-media");
+    for (const { label, image } of images) {
+      const figure = element("figure", "project-media-item");
+      const link = element("a", "project-media-frame");
+      link.href = image.src;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.setAttribute("aria-label", `查看${project.title}${label}原图`);
+      const picture = element("img");
+      picture.src = image.src;
+      picture.alt = `${project.title}${label}`;
+      picture.loading = "lazy";
+      picture.decoding = "async";
+      if (Number.isFinite(image.width) && Number.isFinite(image.height)) {
+        picture.width = image.width;
+        picture.height = image.height;
+      }
+      link.append(picture);
+      figure.append(link, element("figcaption", "", label));
+      media.append(figure);
+    }
+    card.append(media);
+  }
   if (project.description) card.append(element("p", "project-description", project.description));
 
   const chips = element("div", "chip-row");
@@ -196,13 +222,21 @@ function createProjectCard(project, exact = false) {
     });
     copy.addEventListener("click", async () => {
       try {
+        let copied = false;
         if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(quoteText.value);
-        } else {
+          try {
+            await navigator.clipboard.writeText(quoteText.value);
+            copied = true;
+          } catch {
+            // 某些浏览器会暴露 Clipboard API，但拒绝文件页或非安全上下文调用。
+          }
+        }
+        if (!copied) {
           quoteText.focus();
           quoteText.select();
-          if (!document.execCommand("copy")) throw new Error("复制失败");
+          copied = document.execCommand("copy");
         }
+        if (!copied) throw new Error("复制失败");
         copy.textContent = "已复制，请发送给客服";
       } catch {
         quoteText.focus();

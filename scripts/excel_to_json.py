@@ -4,11 +4,18 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import posixpath
 import re
+import shutil
+import struct
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import unquote
+from xml.etree import ElementTree
+from zipfile import BadZipFile, ZipFile
 
 from openpyxl import load_workbook
 
@@ -21,6 +28,8 @@ FIELD_ALIASES = {
     "mcuModel": ("单片机型号", "主控型号", "型号"),
     "usages": ("项目用途", "用途", "功能分类"),
     "modules": ("使用模块", "模块", "硬件模块"),
+    "simulationImage": ("仿真图片", "仿真图"),
+    "hardwareImage": ("实物图片", "实物图"),
     "description": ("项目简介", "简介", "功能简介"),
     "keywords": ("搜索关键词", "关键词", "标签"),
     "visible": ("是否展示", "展示", "上架"),
@@ -31,14 +40,46 @@ FIELD_ALIASES = {
     "thesisPrice": ("论文", "论文价格"),
 }
 
-FORBIDDEN_HEADERS = {"下载链接", "下载地址", "资料介绍链接", "资料链接"}
+FORBIDDEN_HEADERS = {
+    "下载链接",
+    "下载地址",
+    "资料介绍链接",
+    "资料链接",
+    "资料主要内容",
+    "资料内容",
+}
 FALSE_VALUES = {"否", "不展示", "下架", "false", "0", "no"}
+ABSENT_PRICE_VALUES = {"无"}
 PRICE_FIELDS = (
     ("仿真+仿真代码", "simulationPrice"),
     ("原理图+PCB设计", "pcbPrice"),
     ("硬件实物+配套硬件代码", "hardwarePrice"),
     ("论文", "thesisPrice"),
 )
+IMAGE_FIELDS = (
+    ("仿真图片", "simulationImage"),
+    ("实物图片", "hardwareImage"),
+)
+DISPIMG_RE = re.compile(
+    r'^=?\s*(?:_xlfn\.)?DISPIMG\(\s*"([^"]+)"\s*,\s*[01]\s*\)\s*$',
+    re.IGNORECASE,
+)
+WPS_NAMESPACES = {
+    "etc": "http://www.wps.cn/officeDocument/2017/etCustomData",
+    "xdr": "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing",
+    "a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+    "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+}
+RELATIONSHIP_NAMESPACE = "{http://schemas.openxmlformats.org/package/2006/relationships}"
+RELATIONSHIP_IMAGE_TYPE = (
+    "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image"
+)
+RELATIONSHIP_EMBED = f"{{{WPS_NAMESPACES['r']}}}embed"
+MAX_IMAGE_BYTES = 20 * 1024 * 1024
+MAX_TOTAL_IMAGE_BYTES = 500 * 1024 * 1024
+PROJECT_IMAGE_URL = "./assets/generated/projects"
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_IMAGE_DIRECTORY = REPOSITORY_ROOT / "site" / "assets" / "generated" / "projects"
 
 USAGE_RULES = (
     ("温湿度检测", r"温湿度|温度|湿度|测温|体温"),
@@ -135,24 +176,163 @@ def parse_sort(value: object, row_number: int) -> int:
 
 
 def parse_price(value: object, row_number: int, label: str) -> int | float | str | None:
-    if value is None or value_to_text(value) == "":
+    text = value_to_text(value)
+    if value is None or text == "" or text in ABSENT_PRICE_VALUES:
         return None
     if isinstance(value, bool):
-        raise ValidationError(f"第{row_number}行：{label}必须填写金额、面议或留空")
+        raise ValidationError(f"第{row_number}行：{label}必须填写金额、面议、无或留空")
     if isinstance(value, (int, float)):
         number = float(value)
     else:
-        text = value_to_text(value)
         if text in {"面议", "咨询", "价格咨询"}:
             return text
         cleaned = re.sub(r"[¥￥,，\s]", "", text)
         try:
             number = float(cleaned)
         except ValueError as error:
-            raise ValidationError(f"第{row_number}行：{label}必须填写金额、面议或留空") from error
+            raise ValidationError(
+                f"第{row_number}行：{label}必须填写金额、面议、无或留空"
+            ) from error
     if number < 0:
         raise ValidationError(f"第{row_number}行：{label}不能为负数")
     return int(number) if number.is_integer() else round(number, 2)
+
+
+def image_info(data: bytes) -> tuple[str, int, int]:
+    if (
+        data.startswith(b"\x89PNG\r\n\x1a\n")
+        and len(data) >= 24
+        and data[12:16] == b"IHDR"
+    ):
+        width, height = struct.unpack(">II", data[16:24])
+        if width and height:
+            return "png", width, height
+
+    if data.startswith(b"\xff\xd8"):
+        position = 2
+        start_of_frame = {
+            0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7,
+            0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF,
+        }
+        while position + 4 <= len(data):
+            while position < len(data) and data[position] == 0xFF:
+                position += 1
+            if position >= len(data):
+                break
+            marker = data[position]
+            position += 1
+            if marker in {0x01, *range(0xD0, 0xDA)}:
+                continue
+            if position + 2 > len(data):
+                break
+            length = int.from_bytes(data[position:position + 2], "big")
+            if length < 2 or position + length > len(data):
+                break
+            if marker in start_of_frame and length >= 7:
+                height = int.from_bytes(data[position + 3:position + 5], "big")
+                width = int.from_bytes(data[position + 5:position + 7], "big")
+                if width and height:
+                    return "jpg", width, height
+            position += length
+
+    raise ValidationError("项目图片仅支持 JPG 或 PNG 格式")
+
+
+def safe_media_member(target: str, members: set[str]) -> str:
+    decoded = unquote(target.replace("\\", "/"))
+    if not decoded or "\x00" in decoded or decoded.startswith("/"):
+        raise ValidationError("WPS图片路径无效")
+    if ".." in decoded.split("/"):
+        raise ValidationError("WPS图片路径不能包含上级目录")
+    member = posixpath.normpath(posixpath.join("xl", decoded))
+    if not member.startswith("xl/media/") or member not in members:
+        raise ValidationError("WPS图片媒体文件缺失")
+    return member
+
+
+def load_wps_images(input_path: Path) -> dict[str, dict]:
+    with ZipFile(input_path) as archive:
+        members = archive.namelist()
+        if len(members) != len(set(members)):
+            raise ValidationError("Excel压缩包包含重复文件")
+        member_set = set(members)
+        cell_images_path = "xl/cellimages.xml"
+        relationships_path = "xl/_rels/cellimages.xml.rels"
+        present = {cell_images_path, relationships_path}.intersection(member_set)
+        if not present:
+            return {}
+        if len(present) != 2:
+            raise ValidationError("WPS图片索引不完整")
+
+        relationships = {}
+        relationship_root = ElementTree.fromstring(archive.read(relationships_path))
+        for relationship in relationship_root.findall(
+            f"{RELATIONSHIP_NAMESPACE}Relationship"
+        ):
+            if relationship.get("TargetMode") == "External":
+                raise ValidationError("项目图片不能使用外部链接")
+            if relationship.get("Type") == RELATIONSHIP_IMAGE_TYPE:
+                relationships[relationship.get("Id", "")] = relationship.get("Target", "")
+
+        images = {}
+        total_bytes = 0
+        image_root = ElementTree.fromstring(archive.read(cell_images_path))
+        for item in image_root.findall("etc:cellImage", WPS_NAMESPACES):
+            properties = item.find(".//xdr:cNvPr", WPS_NAMESPACES)
+            blip = item.find(".//a:blip", WPS_NAMESPACES)
+            if properties is None or blip is None:
+                raise ValidationError("WPS图片节点不完整")
+            image_id = properties.get("name", "")
+            relationship_id = blip.get(RELATIONSHIP_EMBED, "")
+            target = relationships.get(relationship_id)
+            if not image_id or not target:
+                raise ValidationError("WPS图片ID或关系缺失")
+            if image_id in images:
+                raise ValidationError(f"WPS图片ID重复：{image_id}")
+
+            member = safe_media_member(target, member_set)
+            image_bytes = archive.getinfo(member).file_size
+            if image_bytes > MAX_IMAGE_BYTES:
+                raise ValidationError(f"图片“{image_id}”超过20MB")
+            total_bytes += image_bytes
+            if total_bytes > MAX_TOTAL_IMAGE_BYTES:
+                raise ValidationError("Excel内图片总大小超过500MB")
+            data = archive.read(member)
+            extension, width, height = image_info(data)
+            images[image_id] = {
+                "data": data,
+                "extension": extension,
+                "width": width,
+                "height": height,
+            }
+        return images
+
+
+def parse_image(
+    value: object,
+    row_number: int,
+    label: str,
+    embedded_images: dict[str, dict],
+    assets: dict[str, bytes] | None,
+) -> dict | None:
+    text = value_to_text(value)
+    if not text:
+        return None
+    match = DISPIMG_RE.fullmatch(text)
+    if not match:
+        raise ValidationError(f"第{row_number}行：{label}必须使用WPS嵌入单元格图片或留空")
+    image_id = match.group(1)
+    image = embedded_images.get(image_id)
+    if image is None:
+        raise ValidationError(f"第{row_number}行：{label}对应的图片文件缺失")
+    filename = f"{hashlib.sha256(image['data']).hexdigest()[:20]}.{image['extension']}"
+    if assets is not None:
+        assets[filename] = image["data"]
+    return {
+        "src": f"{PROJECT_IMAGE_URL}/{filename}",
+        "width": image["width"],
+        "height": image["height"],
+    }
 
 
 def resolve_columns(headers: list[str]) -> dict[str, int]:
@@ -180,8 +360,9 @@ def resolve_columns(headers: list[str]) -> dict[str, int]:
     return columns
 
 
-def parse_workbook(input_path: Path) -> dict:
-    workbook = load_workbook(input_path, read_only=True, data_only=True)
+def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> dict:
+    embedded_images = load_wps_images(input_path)
+    workbook = load_workbook(input_path, read_only=True, data_only=False)
     try:
         sheet = workbook["项目数据库"] if "项目数据库" in workbook.sheetnames else workbook.active
         all_rows = list(sheet.iter_rows(values_only=True))
@@ -237,22 +418,27 @@ def parse_workbook(input_path: Path) -> dict:
             parsed_price = parse_price(get(row, field), row_number, label)
             if parsed_price is not None:
                 prices.append({"label": label, "price": parsed_price})
-        projects.append(
-            {
-                "id": project_id,
-                "code": project_code,
-                "title": title,
-                "series": series,
-                "mcuFamily": mcu_family,
-                "mcuModel": value_to_text(get(row, "mcuModel")),
-                "usages": usages,
-                "modules": modules,
-                "description": value_to_text(get(row, "description")),
-                "keywords": split_list(get(row, "keywords")),
-                "prices": prices,
-                "sort": parse_sort(get(row, "sort"), row_number),
-            }
-        )
+        project = {
+            "id": project_id,
+            "code": project_code,
+            "title": title,
+            "series": series,
+            "mcuFamily": mcu_family,
+            "mcuModel": value_to_text(get(row, "mcuModel")),
+            "usages": usages,
+            "modules": modules,
+            "description": value_to_text(get(row, "description")),
+            "keywords": split_list(get(row, "keywords")),
+            "prices": prices,
+            "sort": parse_sort(get(row, "sort"), row_number),
+        }
+        for label, field in IMAGE_FIELDS:
+            image = parse_image(
+                get(row, field), row_number, label, embedded_images, assets
+            )
+            if image is not None:
+                project[field] = image
+        projects.append(project)
 
     if not projects:
         raise ValidationError("没有可展示的项目，请检查“是否展示”列和必填字段")
@@ -275,6 +461,27 @@ def write_json(payload: dict, output_path: Path) -> None:
     temporary.replace(output_path)
 
 
+def write_assets(
+    assets: dict[str, bytes], repository_root: Path = REPOSITORY_ROOT
+) -> None:
+    root = repository_root.resolve()
+    output_path = repository_root / "site" / "assets" / "generated" / "projects"
+    if output_path.resolve() != root / "site" / "assets" / "generated" / "projects":
+        raise ValidationError("图片输出目录必须位于项目的固定目录内")
+    current = repository_root
+    for part in ("site", "assets", "generated", "projects"):
+        current /= part
+        if current.exists() and current.is_symlink():
+            raise ValidationError("图片输出目录不能经过符号链接")
+    if output_path.exists():
+        if not output_path.is_dir():
+            raise ValidationError("图片输出路径不是文件夹")
+        shutil.rmtree(output_path)
+    output_path.mkdir(parents=True, exist_ok=True)
+    for filename, data in assets.items():
+        (output_path / filename).write_bytes(data)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="解析项目数据库Excel并生成网页数据")
     parser.add_argument("--input", type=Path, default=Path("data/项目链接清单.xlsx"))
@@ -283,12 +490,14 @@ def main() -> int:
     args = parser.parse_args()
 
     try:
-        payload = parse_workbook(args.input)
+        assets = None if args.check_only else {}
+        payload = parse_workbook(args.input, assets)
         if not args.check_only:
+            write_assets(assets)
             write_json(payload, args.output)
         print(f"Excel解析成功：{len(payload['projects'])}个项目")
         return 0
-    except (ValidationError, FileNotFoundError) as error:
+    except (BadZipFile, ElementTree.ParseError, OSError, ValidationError) as error:
         print(f"Excel校验失败：{error}", file=sys.stderr)
         return 1
 

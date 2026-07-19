@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import test from "node:test";
-import { buildRequirementText, priceSelectionSummary, searchProjects } from "../site/app.js";
+import { buildRequirementText, priceSelectionSummary, projectImageEntries, searchProjects } from "../site/app.js";
 
 test("搜索支持精准编号和多关键词", () => {
   const projects = [
@@ -44,9 +44,20 @@ test("生成数据不包含内部资料字段和链接", async () => {
   assert.equal(serialized.includes("下载链接"), false);
   assert.equal(serialized.includes("资料介绍链接"), false);
   assert.equal(serialized.includes("资料主要内容"), false);
+  assert.equal(serialized.includes("DISPIMG"), false);
   assert.equal(/https?:\/\//.test(serialized), false);
   assert.equal(new Set(payload.projects.map((project) => project.id)).size, payload.projects.length);
   assert.ok(payload.projects.length > 300);
+});
+
+test("项目图片只返回已填写的仿真图和实物图", () => {
+  const both = projectImageEntries({
+    simulationImage: { src: "./simulation.jpg" },
+    hardwareImage: { src: "./hardware.jpg" }
+  });
+  assert.deepEqual(both.map(({ label }) => label), ["仿真图片", "实物图片"]);
+  assert.equal(projectImageEntries({ hardwareImage: { src: "./hardware.jpg" } }).length, 1);
+  assert.deepEqual(projectImageEntries({}), []);
 });
 
 test("价格方案支持自由组合并计算总价", () => {

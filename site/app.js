@@ -74,6 +74,16 @@ function priceSummary(prices = []) {
   return prices.length ? formatPrice(prices[0].price) : "价格咨询";
 }
 
+export function priceSelectionSummary(selectedPrices = []) {
+  const numeric = selectedPrices.filter((item) => typeof item.price === "number");
+  const consulting = selectedPrices.length - numeric.length;
+  const total = numeric.reduce((sum, item) => sum + item.price, 0);
+  if (!selectedPrices.length) return "已选 0 项，合计 ¥0";
+  if (consulting && !numeric.length) return `已选 ${selectedPrices.length} 项，价格需咨询`;
+  if (consulting) return `已选 ${selectedPrices.length} 项，已知合计 ${formatPrice(total)}，另有 ${consulting} 项需咨询`;
+  return `已选 ${selectedPrices.length} 项，合计 ${formatPrice(total)}`;
+}
+
 function groupCounts(projects, selector) {
   const counts = new Map();
   for (const project of projects) {
@@ -88,7 +98,16 @@ function createProjectCard(project, exact = false) {
   top.append(element("span", "project-id", project.code || project.id));
   const topMeta = element("div", "project-top-meta");
   if (exact) topMeta.append(element("span", "exact-badge", "精准匹配"));
-  topMeta.append(element("span", "project-price", priceSummary(project.prices)));
+  if (project.prices?.length) {
+    topMeta.append(element("span", "project-price", priceSummary(project.prices)));
+  } else {
+    const consult = element("details", "price-consult");
+    consult.append(
+      element("summary", "project-price", "价格咨询"),
+      element("p", "price-consult-note", `该项目暂未录入公开价格，请提供项目编号 ${project.code || project.id} 咨询。`)
+    );
+    topMeta.append(consult);
+  }
   top.append(topMeta);
   card.append(top, element("h3", "", project.title));
 
@@ -103,14 +122,25 @@ function createProjectCard(project, exact = false) {
 
   if (project.prices?.length) {
     const details = element("details", "price-options");
-    const summary = element("summary", "", `查看 ${project.prices.length} 种价格方案`);
+    const summary = element("summary", "", `自由组合 ${project.prices.length} 种价格方案`);
     const list = element("div", "price-list");
+    const choices = [];
     for (const option of project.prices) {
-      const row = element("div", "price-row");
-      row.append(element("span", "", option.label), element("strong", "", formatPrice(option.price)));
+      const row = element("label", "price-row");
+      const choice = element("span", "price-choice");
+      const checkbox = element("input");
+      checkbox.type = "checkbox";
+      choice.append(checkbox, element("span", "", option.label));
+      row.append(choice, element("strong", "", formatPrice(option.price)));
       list.append(row);
+      choices.push({ checkbox, option });
     }
-    details.append(summary, list);
+    const total = element("output", "price-total", priceSelectionSummary());
+    total.setAttribute("aria-live", "polite");
+    list.addEventListener("change", () => {
+      total.textContent = priceSelectionSummary(choices.filter(({ checkbox }) => checkbox.checked).map(({ option }) => option));
+    });
+    details.append(summary, list, total);
     card.append(details);
   }
   return card;

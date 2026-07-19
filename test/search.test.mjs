@@ -59,11 +59,13 @@ test("价格方案支持自由组合并计算总价", () => {
 test("确认后生成可复制的项目需求", () => {
   const text = buildRequirementText(
     { code: "Y001", title: "语音识别柔光台灯" },
-    [{ label: "仿真+仿真代码", price: 200 }, { label: "原理图+PCB设计", price: 100 }]
+    [{ label: "仿真+仿真代码", price: 200 }, { label: "原理图+PCB设计", price: 100 }],
+    " 需要加急交付 "
   );
   assert.match(text, /项目名称：语音识别柔光台灯/);
   assert.match(text, /项目编号：Y001/);
   assert.match(text, /1\. 仿真\+仿真代码：¥200/);
   assert.match(text, /2\. 原理图\+PCB设计：¥100/);
   assert.match(text, /报价结果：已选 2 项，合计 ¥300/);
+  assert.match(text, /备注：需要加急交付/);
 });

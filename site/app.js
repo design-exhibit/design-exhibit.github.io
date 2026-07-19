@@ -84,16 +84,18 @@ export function priceSelectionSummary(selectedPrices = []) {
   return `已选 ${selectedPrices.length} 项，合计 ${formatPrice(total)}`;
 }
 
-export function buildRequirementText(project, selectedPrices = []) {
+export function buildRequirementText(project, selectedPrices = [], note = "") {
   if (!selectedPrices.length) return "";
   const lines = selectedPrices.map((item, index) => `${index + 1}. ${item.label}：${formatPrice(item.price)}`);
-  return [
+  const result = [
     `项目名称：${project.title || "未填写"}`,
     `项目编号：${project.code || project.id || "未填写"}`,
     "需求组合：",
     ...lines,
     `报价结果：${priceSelectionSummary(selectedPrices)}`
-  ].join("\n");
+  ];
+  if (note.trim()) result.push(`备注：${note.trim()}`);
+  return result.join("\n");
 }
 
 function groupCounts(projects, selector) {
@@ -134,6 +136,7 @@ function createProjectCard(project, exact = false) {
 
   if (project.prices?.length) {
     const details = element("details", "price-options");
+    details.open = true;
     const summary = element("summary", "", `自由组合 ${project.prices.length} 种价格方案`);
     const list = element("div", "price-list");
     const choices = [];
@@ -149,6 +152,11 @@ function createProjectCard(project, exact = false) {
     }
     const total = element("output", "price-total", priceSelectionSummary());
     total.setAttribute("aria-live", "polite");
+    const noteLabel = element("label", "quote-note-label");
+    const note = element("textarea", "quote-note-input");
+    note.rows = 3;
+    note.placeholder = "例如：需要加急、修改功能、指定芯片型号等";
+    noteLabel.append(element("span", "", "备注（选填）"), note);
     const confirm = element("button", "confirm-quote", "确认需求");
     confirm.type = "button";
     confirm.disabled = true;
@@ -170,15 +178,19 @@ function createProjectCard(project, exact = false) {
     confirmation.append(confirmationTitle, quoteText, copy, copyHint, qr);
 
     const selectedOptions = () => choices.filter(({ checkbox }) => checkbox.checked).map(({ option }) => option);
+    const resetConfirmation = () => {
+      confirmation.hidden = true;
+      copy.textContent = "一键复制需求发送给客服";
+    };
     list.addEventListener("change", () => {
       const selected = selectedOptions();
       total.textContent = priceSelectionSummary(selected);
       confirm.disabled = !selected.length;
-      confirmation.hidden = true;
-      copy.textContent = "一键复制需求发送给客服";
+      resetConfirmation();
     });
+    note.addEventListener("input", resetConfirmation);
     confirm.addEventListener("click", () => {
-      quoteText.value = buildRequirementText(project, selectedOptions());
+      quoteText.value = buildRequirementText(project, selectedOptions(), note.value);
       confirmation.hidden = false;
       confirmation.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
@@ -198,7 +210,7 @@ function createProjectCard(project, exact = false) {
         copy.textContent = "复制失败，请手动复制";
       }
     });
-    details.append(summary, list, total, confirm, confirmation);
+    details.append(summary, list, total, noteLabel, confirm, confirmation);
     card.append(details);
   }
   return card;

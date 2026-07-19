@@ -122,6 +122,9 @@ h1 em { color: var(--cyan); font-style: normal; }
 .price-choice input { width: 16px; height: 16px; flex: 0 0 auto; margin: 0; accent-color: var(--cyan-dark); }
 .price-row strong { color: #8f570f; white-space: nowrap; }
 .price-total { display: block; margin-top: 10px; padding: 9px 11px; border-radius: 9px; color: #075f5b; background: #e9f7f5; font-size: 12px; font-weight: 850; }
+.quote-note-label { display: grid; gap: 6px; margin-top: 10px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.quote-note-input { width: 100%; padding: 9px 11px; resize: vertical; border: 1px solid #c8d8df; border-radius: 9px; color: var(--ink); background: #fff; font: inherit; font-size: 12px; line-height: 1.55; }
+.quote-note-input:focus { outline: 3px solid rgba(8,127,122,.16); border-color: var(--cyan-dark); }
 .confirm-quote, .copy-quote { width: 100%; margin-top: 10px; padding: 10px 14px; border: 0; border-radius: 9px; color: #fff; background: var(--cyan-dark); cursor: pointer; font-size: 12px; font-weight: 800; }
 .confirm-quote:hover, .copy-quote:hover { background: #066d69; }
 .confirm-quote:disabled { color: #8d9aa7; background: #e4e9ed; cursor: not-allowed; }

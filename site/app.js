@@ -84,6 +84,18 @@ export function priceSelectionSummary(selectedPrices = []) {
   return `已选 ${selectedPrices.length} 项，合计 ${formatPrice(total)}`;
 }
 
+export function buildRequirementText(project, selectedPrices = []) {
+  if (!selectedPrices.length) return "";
+  const lines = selectedPrices.map((item, index) => `${index + 1}. ${item.label}：${formatPrice(item.price)}`);
+  return [
+    `项目名称：${project.title || "未填写"}`,
+    `项目编号：${project.code || project.id || "未填写"}`,
+    "需求组合：",
+    ...lines,
+    `报价结果：${priceSelectionSummary(selectedPrices)}`
+  ].join("\n");
+}
+
 function groupCounts(projects, selector) {
   const counts = new Map();
   for (const project of projects) {
@@ -137,10 +149,56 @@ function createProjectCard(project, exact = false) {
     }
     const total = element("output", "price-total", priceSelectionSummary());
     total.setAttribute("aria-live", "polite");
+    const confirm = element("button", "confirm-quote", "确认需求");
+    confirm.type = "button";
+    confirm.disabled = true;
+
+    const confirmation = element("div", "quote-confirmation");
+    confirmation.hidden = true;
+    const confirmationTitle = element("h4", "", "需求已确认");
+    const quoteText = element("textarea", "quote-text");
+    quoteText.readOnly = true;
+    quoteText.rows = 8;
+    quoteText.setAttribute("aria-label", "已确认的项目需求");
+    const copy = element("button", "copy-quote", "一键复制需求发送给客服");
+    copy.type = "button";
+    const copyHint = element("p", "quote-hint", "复制后，请扫码添加客服微信并粘贴发送。");
+    const qr = element("img", "wechat-qr");
+    qr.src = "./assets/customer-wechat.png";
+    qr.alt = "客服微信二维码";
+    qr.loading = "lazy";
+    confirmation.append(confirmationTitle, quoteText, copy, copyHint, qr);
+
+    const selectedOptions = () => choices.filter(({ checkbox }) => checkbox.checked).map(({ option }) => option);
     list.addEventListener("change", () => {
-      total.textContent = priceSelectionSummary(choices.filter(({ checkbox }) => checkbox.checked).map(({ option }) => option));
+      const selected = selectedOptions();
+      total.textContent = priceSelectionSummary(selected);
+      confirm.disabled = !selected.length;
+      confirmation.hidden = true;
+      copy.textContent = "一键复制需求发送给客服";
     });
-    details.append(summary, list, total);
+    confirm.addEventListener("click", () => {
+      quoteText.value = buildRequirementText(project, selectedOptions());
+      confirmation.hidden = false;
+      confirmation.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    copy.addEventListener("click", async () => {
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(quoteText.value);
+        } else {
+          quoteText.focus();
+          quoteText.select();
+          if (!document.execCommand("copy")) throw new Error("复制失败");
+        }
+        copy.textContent = "已复制，请发送给客服";
+      } catch {
+        quoteText.focus();
+        quoteText.select();
+        copy.textContent = "复制失败，请手动复制";
+      }
+    });
+    details.append(summary, list, total, confirm, confirmation);
     card.append(details);
   }
   return card;

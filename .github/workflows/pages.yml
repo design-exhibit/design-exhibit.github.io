@@ -1,0 +1,66 @@
+name: 解析Excel并发布课题库
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/项目链接清单.xlsx"
+      - "site/**"
+      - "scripts/excel_to_json.py"
+      - "test/**"
+      - "requirements.txt"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 获取代码
+        uses: actions/checkout@v4
+
+      - name: 使用Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装Excel解析依赖
+        run: pip install -r requirements.txt
+
+      - name: 校验并解析Excel
+        run: python scripts/excel_to_json.py
+
+      - name: 测试Excel解析
+        run: python -m unittest discover -s test -p "test_*.py"
+
+      - name: 使用Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 测试网页搜索
+        run: node --test
+
+      - name: 配置GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传静态网站
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: 发布GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

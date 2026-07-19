@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="按单片机、项目用途和模块快速查找毕业设计课题。">
+  <title>智造课题库｜单片机毕业设计项目</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="返回课题库首页">
+      <span class="brand-mark" aria-hidden="true">µ</span>
+      <span>智造课题库</span>
+    </a>
+    <span class="header-note">毕业设计项目展示平台</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+      <div class="hero-inner">
+        <div class="eyebrow"><span></span> 单片机 / 传感器 / 智能控制</div>
+        <h1 id="hero-title">从技术方向出发，<br><em>快速找到合适课题</em></h1>
+        <p class="hero-copy">按单片机类型、项目用途和硬件模块逐层筛选，也可以直接输入编号或关键词搜索。</p>
+
+        <div class="search-shell">
+          <form id="search-form" class="search-form" role="search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <label class="sr-only" for="project-search">搜索项目</label>
+            <input id="project-search" type="search" autocomplete="off" placeholder="输入项目编号、名称、用途或模块…">
+            <button id="clear-search" class="clear-search" type="button" hidden>清空</button>
+          </form>
+          <p id="search-hint" class="search-hint">可搜索：STM32、温湿度、超声波、项目编号</p>
+          <section id="search-panel" class="search-panel" aria-live="polite" hidden>
+            <div class="search-panel-head">
+              <h2>搜索结果</h2>
+              <span id="search-count"></span>
+            </div>
+            <div id="search-results" class="project-grid compact-grid"></div>
+          </section>
+        </div>
+
+        <dl class="hero-stats" aria-label="课题库统计">
+          <div><dt id="stat-projects">—</dt><dd>收录项目</dd></div>
+          <div><dt id="stat-mcus">—</dt><dd>主控分类</dd></div>
+          <div><dt id="stat-usages">—</dt><dd>用途方向</dd></div>
+          <div><dt id="stat-modules">—</dt><dd>硬件模块</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-title">
+      <nav id="breadcrumbs" class="breadcrumbs" aria-label="当前位置"></nav>
+
+      <div class="catalog-heading">
+        <div>
+          <p id="catalog-kicker" class="catalog-kicker">第一步</p>
+          <h2 id="catalog-title">选择单片机类型</h2>
+          <p id="catalog-description">从主控平台开始浏览课题，卡片数量表示该分类下的项目数。</p>
+        </div>
+        <div id="mode-tabs" class="mode-tabs" role="group" aria-label="分类方式" hidden>
+          <button type="button" data-mode="usage">按项目用途</button>
+          <button type="button" data-mode="module">按使用模块</button>
+        </div>
+      </div>
+
+      <div id="catalog-content" class="category-grid" aria-live="polite"></div>
+      <div id="load-more-wrap" class="load-more-wrap" hidden>
+        <button id="load-more" class="load-more" type="button">显示更多项目</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><span class="brand-mark small" aria-hidden="true">µ</span> 智造课题库</div>
+    <p id="data-source">正在读取数据来源</p>
+    <p id="updated-at">数据加载中</p>
+  </footer>
+
+  <noscript>此页面需要启用 JavaScript 才能搜索和筛选项目。</noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

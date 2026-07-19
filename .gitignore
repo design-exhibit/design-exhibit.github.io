@@ -1,0 +1,9 @@
+.artifact-work/
+node_modules/
+__pycache__/
+*.pyc
+项目链接清单_原始备份*.xlsx
+1/
+~$*.xlsx
+*.inspect.ndjson
+Thumbs.db

@@ -1,0 +1,10 @@
+{
+  "name": "graduation-project-showcase",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "import:excel": "python scripts/excel_to_json.py",
+    "test": "node --test"
+  }
+}

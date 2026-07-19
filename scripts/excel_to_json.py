@@ -360,14 +360,22 @@ def resolve_columns(headers: list[str]) -> dict[str, int]:
     return columns
 
 
-def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> dict:
-    embedded_images = load_wps_images(input_path)
-    workbook = load_workbook(input_path, read_only=True, data_only=False)
+def read_workbook_rows(input_path: Path, data_only: bool) -> list[tuple]:
+    workbook = load_workbook(input_path, read_only=True, data_only=data_only)
     try:
-        sheet = workbook["项目数据库"] if "项目数据库" in workbook.sheetnames else workbook.active
-        all_rows = list(sheet.iter_rows(values_only=True))
+        preferred = next(
+            (name for name in ("项目链接清单", "项目数据库") if name in workbook.sheetnames),
+            None,
+        )
+        sheet = workbook[preferred] if preferred else workbook.active
+        return list(sheet.iter_rows(values_only=True))
     finally:
         workbook.close()
+
+
+def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> dict:
+    all_rows = read_workbook_rows(input_path, data_only=True)
+    formula_rows = read_workbook_rows(input_path, data_only=False)
     rows = iter(all_rows)
 
     try:
@@ -376,6 +384,8 @@ def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> 
         raise ValidationError("Excel没有任何内容") from error
 
     columns = resolve_columns(headers)
+    data_rows = list(rows)
+    formula_data_rows = formula_rows[1:]
     projects: list[dict] = []
     seen_ids: dict[str, int] = {}
 
@@ -383,7 +393,23 @@ def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> 
         index = columns.get(field)
         return row[index] if index is not None and index < len(row) else None
 
-    for row_number, row in enumerate(rows, start=2):
+    def get_image(row_index: int, row: tuple, field: str) -> object:
+        formula_row = formula_data_rows[row_index] if row_index < len(formula_data_rows) else ()
+        formula_value = get(formula_row, field)
+        return formula_value if value_to_text(formula_value) else get(row, field)
+
+    has_project_images = any(
+        value_to_text(get(row, "visible")).lower() not in FALSE_VALUES
+        and any(
+            value_to_text(get_image(row_index, row, field))
+            for _label, field in IMAGE_FIELDS
+        )
+        for row_index, row in enumerate(data_rows)
+    )
+    embedded_images = load_wps_images(input_path) if has_project_images else {}
+
+    for row_index, row in enumerate(data_rows):
+        row_number = row_index + 2
         if not any(value_to_text(value) for value in row):
             continue
         if value_to_text(get(row, "visible")).lower() in FALSE_VALUES:
@@ -434,7 +460,11 @@ def parse_workbook(input_path: Path, assets: dict[str, bytes] | None = None) -> 
         }
         for label, field in IMAGE_FIELDS:
             image = parse_image(
-                get(row, field), row_number, label, embedded_images, assets
+                get_image(row_index, row, field),
+                row_number,
+                label,
+                embedded_images,
+                assets,
             )
             if image is not None:
                 project[field] = image

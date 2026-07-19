@@ -50,6 +50,12 @@ class ExcelParserTest(unittest.TestCase):
             archive.writestr("xl/_rels/cellimages.xml.rels", relationships)
             archive.writestr("xl/media/image1.png", image)
 
+    def add_incomplete_wps_index(self, path):
+        cell_images = """<?xml version="1.0" encoding="UTF-8"?>
+<etc:cellImages xmlns:etc="http://www.wps.cn/officeDocument/2017/etCustomData"/>"""
+        with ZipFile(path, "a") as archive:
+            archive.writestr("xl/cellimages.xml", cell_images)
+
     def test_parse_public_fields(self):
         path = self.make_workbook(
             ["项目系列", "项目编号", "项目名称", "单片机分类", "项目用途", "使用模块", "仿真+仿真代码", "论文", "是否展示", "排序"],
@@ -98,6 +104,41 @@ class ExcelParserTest(unittest.TestCase):
         output = path.parent / "site" / "assets" / "generated" / "projects"
         write_assets(assets, path.parent)
         self.assertEqual(len(list(output.iterdir())), 1)
+
+    def test_ignore_incomplete_wps_index_without_project_images(self):
+        path = self.make_workbook(
+            ["项目编号", "项目名称", "单片机分类", "仿真图片", "实物图片"],
+            [["T001", "无图片项目", "STM32", "", None]],
+        )
+        self.add_incomplete_wps_index(path)
+
+        payload = parse_workbook(path)
+
+        self.assertEqual(len(payload["projects"]), 1)
+        self.assertNotIn("simulationImage", payload["projects"][0])
+
+    def test_reject_incomplete_wps_index_when_image_is_used(self):
+        path = self.make_workbook(
+            ["项目编号", "项目名称", "单片机分类", "仿真图片"],
+            [["T001", "图片缺失项目", "STM32", '=DISPIMG("ID_MISSING",1)']],
+        )
+        self.add_incomplete_wps_index(path)
+
+        with self.assertRaisesRegex(ValidationError, "WPS图片索引不完整"):
+            parse_workbook(path)
+
+    def test_ignore_blank_template_row_with_sequence_formula(self):
+        path = self.make_workbook(
+            ["序号", "项目编号", "项目名称", "单片机分类"],
+            [
+                ['=IF(B2<>"",ROW()-1,"")', None, None, None],
+                [1, "T001", "有效项目", "STM32"],
+            ],
+        )
+
+        payload = parse_workbook(path)
+
+        self.assertEqual([project["code"] for project in payload["projects"]], ["T001"])
 
     def test_reject_duplicate_ids(self):
         path = self.make_workbook(

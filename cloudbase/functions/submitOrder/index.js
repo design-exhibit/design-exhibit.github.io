@@ -11,8 +11,10 @@ const ORDERS_COLLECTION = "orders";
 const CATALOG_URL = "https://design-exhibit.github.io/data/projects.json";
 const MAX_BODY_BYTES = 16 * 1024;
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
+const MAX_UPSTREAM_BYTES = 64 * 1024;
 const CATALOG_CACHE_MS = 60 * 1000;
 const PRODUCTION_ORIGIN = "https://design-exhibit.github.io";
+const ORDER_UPSTREAM_URL = String(process.env.ORDER_UPSTREAM_URL || "").trim();
 const ORDER_PATHS = new Set(["/", "/api/orders"]);
 let catalogCache = null;
 
@@ -36,7 +38,9 @@ function jsonResponse(statusCode, payload, origin = "") {
     "Vary": "Origin"
   };
   // CloudBase网关会为本地来源注入CORS，函数重复写入会生成无效的双值响应头。
-  if (origin === PRODUCTION_ORIGIN) headers["Access-Control-Allow-Origin"] = origin;
+  if (origin === PRODUCTION_ORIGIN || (process.env.DIRECT_CORS === "1" && isAllowedOrigin(origin))) {
+    headers["Access-Control-Allow-Origin"] = origin;
+  }
   return { statusCode, headers, body: payload == null ? "" : JSON.stringify(payload) };
 }
 
@@ -84,10 +88,63 @@ function notificationLine(value) {
   return String(value == null ? "" : value).replace(/[\r\n\u2028\u2029]+/g, " ").trim();
 }
 
+function databaseError(code, operation, detail = "") {
+  const error = new Error(`${operation}失败${detail ? `：${detail}` : ""}`);
+  error.code = notificationLine(code) || "DATABASE_UNKNOWN_ERROR";
+  return error;
+}
+
+function assertDatabaseResult(result, operation) {
+  if (!result || typeof result !== "object") {
+    throw databaseError("DATABASE_INVALID_RESULT", operation, "数据库未返回有效结果");
+  }
+  if (result.code) {
+    throw databaseError(result.code, operation, notificationLine(result.message));
+  }
+  return result;
+}
+
+async function forwardOrderRequest(request, origin, fetchImpl = fetch, upstreamUrl = ORDER_UPSTREAM_URL) {
+  if (!/^https:\/\/[a-z0-9-]+\.service\.tcloudbase\.com\/api\/orders$/i.test(upstreamUrl)) {
+    throw new Error("订单上游地址无效");
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15_000);
+  try {
+    const response = await fetchImpl(upstreamUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Origin: PRODUCTION_ORIGIN
+      },
+      body: request.body,
+      signal: controller.signal
+    });
+    const declaredLength = Number(response.headers.get("content-length") || 0);
+    if (declaredLength > MAX_UPSTREAM_BYTES) throw new Error("订单上游响应过大");
+    const responseText = await response.text();
+    if (Buffer.byteLength(responseText, "utf8") > MAX_UPSTREAM_BYTES) {
+      throw new Error("订单上游响应过大");
+    }
+    let payload;
+    try {
+      payload = JSON.parse(responseText);
+    } catch {
+      throw new Error("订单上游响应格式无效");
+    }
+    return jsonResponse(response.status, payload, origin);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function findExistingOrder(requestId) {
   if (!requestId) return null;
   try {
-    const result = await db.collection(ORDERS_COLLECTION).doc(requestId).get();
+    const result = assertDatabaseResult(
+      await db.collection(ORDERS_COLLECTION).doc(requestId).get(),
+      "订单查询"
+    );
     return Array.isArray(result.data) ? result.data[0] || null : result.data || null;
   } catch (error) {
     const detail = `${error && error.code || ""} ${error && error.message || ""}`;
@@ -138,14 +195,20 @@ async function notifyOwner(order) {
 }
 
 async function handleRequest(request = {}) {
+  const method = String(request.method || "POST").toUpperCase();
+  const pathname = request.pathname || "/";
+
+  if (method === "GET" && pathname === "/health") {
+    return jsonResponse(200, { ok: true, service: "order-api" });
+  }
+
   const origin = headerValue(request.headers, "origin");
   if (!isAllowedOrigin(origin)) return jsonResponse(403, { ok: false, message: "来源不允许" });
 
-  if (!ORDER_PATHS.has(request.pathname || "/")) {
+  if (!ORDER_PATHS.has(pathname)) {
     return jsonResponse(404, { ok: false, message: "接口不存在" }, origin);
   }
 
-  const method = String(request.method || "POST").toUpperCase();
   if (method === "OPTIONS") return jsonResponse(204, null, origin);
   if (method !== "POST") return jsonResponse(405, { ok: false, message: "仅支持POST请求" }, origin);
   if (!headerValue(request.headers, "content-type").toLowerCase().includes("application/json")) {
@@ -153,6 +216,8 @@ async function handleRequest(request = {}) {
   }
 
   try {
+    if (ORDER_UPSTREAM_URL) return await forwardOrderRequest(request, origin);
+
     const input = parseBody(request.body);
     const requestId = requestIdFrom(input);
     const existing = await findExistingOrder(requestId);
@@ -197,7 +262,10 @@ async function handleRequest(request = {}) {
       updatedAt: now
     };
     const orderReference = db.collection(ORDERS_COLLECTION).doc(order.requestId);
-    await orderReference.set(order);
+    const writeResult = assertDatabaseResult(await orderReference.set(order), "订单写入");
+    if (Number(writeResult.updated || 0) < 1 && !writeResult.upsertedId) {
+      throw databaseError("DATABASE_WRITE_NOT_CONFIRMED", "订单写入", "数据库未确认写入");
+    }
 
     if (order.notifyStatus === "pending") {
       try {
@@ -207,7 +275,10 @@ async function handleRequest(request = {}) {
         console.error("订单通知失败", { orderNo: order.orderNo, message: String(error && error.message) });
       }
       try {
-        await orderReference.update({ notifyStatus: order.notifyStatus, updatedAt: new Date() });
+        assertDatabaseResult(
+          await orderReference.update({ notifyStatus: order.notifyStatus, updatedAt: new Date() }),
+          "通知状态更新"
+        );
       } catch (error) {
         console.error("通知状态更新失败", { orderNo: order.orderNo, message: String(error && error.message) });
       }
@@ -223,7 +294,11 @@ async function handleRequest(request = {}) {
     const statusCode = error instanceof InputError ? error.statusCode : 500;
     const message = error instanceof InputError ? error.message : "订单提交失败，请稍后重试";
     console.error("订单提交失败", { name: error && error.name, message: String(error && error.message) });
-    return jsonResponse(statusCode, { ok: false, message }, origin);
+    const payload = { ok: false, message };
+    if (statusCode >= 500 && /^[A-Z][A-Z0-9_-]{2,79}$/.test(String(error && error.code || ""))) {
+      payload.errorCode = String(error.code);
+    }
+    return jsonResponse(statusCode, payload, origin);
   }
 }
 
@@ -269,9 +344,10 @@ function startHttpServer() {
     });
   });
 
-  server.listen(9000, "0.0.0.0");
+  const port = Number.parseInt(process.env.PORT || "", 10) || 9000;
+  server.listen(port, "0.0.0.0");
 }
 
 if (require.main === module) startHttpServer();
 
-module.exports = { handleRequest, startHttpServer };
+module.exports = { assertDatabaseResult, forwardOrderRequest, handleRequest, startHttpServer };

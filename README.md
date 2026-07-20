@@ -18,7 +18,7 @@
 │  └─ data/
 │     └─ projects.json       # Excel自动生成，禁止手工修改
 ├─ cloudbase/functions/
-│  └─ submitOrder/           # Node.js HTTP云函数，接收客户需求
+│  └─ submitOrder/           # CloudRun与HTTP云函数共用的订单服务代码
 ├─ cloudbaserc.json          # CloudBase函数配置
 ├─ scripts/                  # Excel解析和本地预览脚本
 ├─ test/                     # Excel校验和网页搜索测试
@@ -73,9 +73,11 @@
 
 ## 客户需求接收
 
-网页通过 `submitOrder` Node.js HTTP 云函数提交订单，云函数会按线上 `projects.json` 重新核对项目和价格，再写入 `orders` 集合。管理员可在 [CloudBase 文档数据库](https://tcb.cloud.tencent.com/dev?envId=github-d2gr7dltobfb415cc#/db/doc/collection/orders) 查看订单。
+网页通过 `order-api` CloudRun 服务提交订单，CloudRun 在服务端把请求转发给保留的 `submitOrder` HTTP 云函数；云函数会按线上 `projects.json` 重新核对项目和价格，再写入 `orders` 集合。接口地址为 `https://order-api-284527-6-1455865098.sh.run.tcloudbase.com/api/orders`。管理员可在 [CloudBase 文档数据库](https://tcb.cloud.tencent.com/dev?envId=github-d2gr7dltobfb415cc#/db/doc/collection/orders) 查看订单。
 
-云函数使用 CloudBase 运行身份访问数据库，不需要把 API Key 或管理员密钥写进网页。企业微信通知为可选功能；未配置 `WECOM_WEBHOOK_URL` 时，订单仍会正常写库，由管理员在控制台查看。
+原 `submitOrder` HTTP 云函数继续保留作为回退，不会被 CloudRun 部署覆盖。
+
+云函数使用 CloudBase 运行身份访问数据库，CloudRun 不保存 API Key，也不需要把管理员密钥写进网页。企业微信通知为可选功能；未配置 `WECOM_WEBHOOK_URL` 时，订单仍会正常写库，由管理员在控制台查看。
 
 ## 日常更新方式
 

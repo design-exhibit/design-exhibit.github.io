@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+*.log
+*.md
+*.pem
+*.key
+.git
+.gitignore
+.env
+.env.*
+API*.md
+test
+coverage
+scf_bootstrap

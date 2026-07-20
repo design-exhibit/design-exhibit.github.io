@@ -2,7 +2,7 @@ const PALETTE = ["#118b86", "#2b71b8", "#8c62bd", "#d47b32", "#4d8f4e", "#b64f6f
 const DESIGN_PRICE_LABELS = new Set(["仿真+仿真代码", "原理图+PCB设计", "硬件实物+配套硬件代码"]);
 const DOCUMENT_PACKAGE_LABEL = "成果书+任务书+PPT+答辩模板+过AI+过查重";
 const DOCUMENT_SINGLE_LABELS = new Set(["成果书", "任务书", "PPT送答辩模板", "论文"]);
-const ORDER_ENDPOINT = "https://github-d2gr7dltobfb415cc.service.tcloudbase.com/api/orders";
+const ORDER_ENDPOINT = "https://order-api-284527-6-1455865098.sh.run.tcloudbase.com/api/orders";
 const PHONE_PATTERN = /^[0-9+().\-\s]{6,30}$/;
 const ORDER_TIMEOUT_MS = 20_000;
 

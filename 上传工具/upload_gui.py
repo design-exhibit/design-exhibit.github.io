@@ -32,7 +32,13 @@ SCRIPTS_DIRECTORY = REPOSITORY_ROOT / "scripts"
 if str(SCRIPTS_DIRECTORY) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIRECTORY))
 
-from excel_to_json import parse_workbook  # noqa: E402
+from excel_to_json import (  # noqa: E402
+    FALSE_VALUES,
+    parse_workbook,
+    read_workbook_rows,
+    resolve_columns,
+    value_to_text,
+)
 
 
 DATA_RELATIVE_PATH = Path("data") / "项目链接清单.xlsx"
@@ -65,7 +71,51 @@ def _validate_snapshot(path: Path) -> tuple[dict, str]:
     return payload, file_digest(path)
 
 
-def validate_workbook(path: Path) -> tuple[dict, str]:
+def visibility_summary(path: Path, payload: dict) -> dict[str, object]:
+    """统计 Excel 行的展示状态，仅供上传工具日志使用。"""
+    rows = read_workbook_rows(path, data_only=True)
+    if not rows:
+        return {
+            "dataRows": 0,
+            "shown": len(payload.get("projects", [])),
+            "blankRows": [],
+            "notDisplayed": [],
+        }
+
+    headers = [value_to_text(value) for value in rows[0]]
+    columns = resolve_columns(headers)
+    id_column = columns["id"]
+    visible_column = columns.get("visible")
+    blank_rows: list[int] = []
+    not_displayed: list[dict[str, object]] = []
+
+    for row_index, row in enumerate(rows[1:], start=2):
+        if not any(value_to_text(value) for value in row):
+            blank_rows.append(row_index)
+            continue
+        visible = (
+            value_to_text(row[visible_column])
+            if visible_column is not None and visible_column < len(row)
+            else ""
+        )
+        if visible.lower() in FALSE_VALUES:
+            not_displayed.append(
+                {
+                    "row": row_index,
+                    "code": value_to_text(row[id_column]) if id_column < len(row) else "",
+                    "visible": visible,
+                }
+            )
+
+    return {
+        "dataRows": len(rows) - 1,
+        "shown": len(payload.get("projects", [])),
+        "blankRows": blank_rows,
+        "notDisplayed": not_displayed,
+    }
+
+
+def _validate_workbook(path: Path) -> tuple[dict, str, dict[str, object]]:
     if not path.is_file():
         raise UploadError("选择的数据表不存在")
     if path.suffix.lower() != ".xlsx":
@@ -74,9 +124,21 @@ def validate_workbook(path: Path) -> tuple[dict, str]:
         snapshot = Path(directory) / path.name
         shutil.copy2(path, snapshot)
         payload, digest = _validate_snapshot(snapshot)
+        summary = visibility_summary(snapshot, payload)
     if file_digest(path) != digest:
         raise UploadError("数据表在检测过程中发生了变化，请重新检测")
+    return payload, digest, summary
+
+
+def validate_workbook(path: Path) -> tuple[dict, str]:
+    payload, digest, _summary = _validate_workbook(path)
     return payload, digest
+
+
+def validate_workbook_with_visibility_summary(
+    path: Path,
+) -> tuple[dict, str, dict[str, object]]:
+    return _validate_workbook(path)
 
 
 def workbook_summary(payload: dict) -> dict[str, int]:
@@ -462,8 +524,11 @@ class UploadApplication:
 
     def _validation_worker(self) -> None:
         try:
-            payload, digest = validate_workbook(self.selected_path)
+            payload, digest, visibility = validate_workbook_with_visibility_summary(
+                self.selected_path
+            )
             summary = workbook_summary(payload)
+            summary.update(visibility)
         except Exception as error:
             self._post(self._validation_failed, str(error))
             return
@@ -476,14 +541,28 @@ class UploadApplication:
         self._append_log("发现问题：")
         self._append_log(detail)
 
-    def _validation_succeeded(self, digest: str, summary: dict[str, int]) -> None:
+    def _validation_succeeded(self, digest: str, summary: dict[str, object]) -> None:
         self.validated_digest = digest
         self._set_busy(False)
         self._set_status("检测通过，可以上传", "#19703d")
         self._append_log(
-            f"检测通过：{summary['projects']} 个项目，{summary['images']} 张图片，"
-            f"{summary['priced']} 个项目有可选价格。"
+            f"检测通过：Excel 数据行 {summary['dataRows']}，展示 {summary['shown']}，"
+            f"未展示 {len(summary['notDisplayed'])}，空白行 {len(summary['blankRows'])}；"
+            f"{summary['images']} 张图片，{summary['priced']} 个项目有可选价格。"
         )
+        not_displayed = summary["notDisplayed"]
+        if not_displayed:
+            self._append_log("未展示项目：")
+            for item in not_displayed:
+                code = item["code"] or "未填写项目编号"
+                self._append_log(
+                    f"第 {item['row']} 行：{code}（是否展示={item['visible']}）"
+                )
+        blank_rows = summary["blankRows"]
+        if blank_rows:
+            self._append_log(
+                "空白数据行：" + "、".join(str(row) for row in blank_rows)
+            )
 
     def confirm_upload(self) -> None:
         if self.busy or not self.validated_digest or self.selected_path is None:

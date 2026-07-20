@@ -2,11 +2,14 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import test from "node:test";
 import {
+  buildOrderPayload,
   buildRequirementText,
+  isValidPhone,
   priceLabelsToUncheck,
   priceSelectionSummary,
   projectImageEntries,
-  searchProjects
+  searchProjects,
+  submitOrder
 } from "../site/app.js";
 
 test("搜索支持精准编号和多关键词", () => {
@@ -97,4 +100,83 @@ test("确认后生成可复制的项目需求", () => {
   assert.match(text, /2\. 原理图\+PCB设计：¥100/);
   assert.match(text, /报价结果：已选 2 项，合计 ¥300/);
   assert.match(text, /备注：需要加急交付/);
+});
+
+test("订单 payload 严格匹配后端字段且未勾选邮寄时不带地址", () => {
+  const payload = buildOrderPayload({
+    requestId: "123e4567-e89b-42d3-a456-426614174000",
+    catalogGeneratedAt: "2026-07-20T00:00:00Z",
+    project: { id: "S系列::S001", code: "S001", title: "测试项目" },
+    selectedPrices: [{ label: "仿真+仿真代码", price: 100 }],
+    note: " 需要加急 ",
+    customer: { name: " 张三 ", phone: " 13800138000 ", wechat: " wx-test " },
+    shipping: { required: false, address: "不应提交的地址" },
+    privacyAccepted: true
+  });
+
+  assert.deepEqual(payload, {
+    requestId: "123e4567-e89b-42d3-a456-426614174000",
+    catalogGeneratedAt: "2026-07-20T00:00:00Z",
+    projectId: "S系列::S001",
+    selectedLabels: ["仿真+仿真代码"],
+    note: "需要加急",
+    customer: { name: "张三", phone: "13800138000", wechat: "wx-test" },
+    shipping: { required: false, address: "" },
+    privacyAccepted: true,
+    website: ""
+  });
+});
+
+test("客户信息只通过 POST body 提交，不进入复制文本、URL 或本地存储", async () => {
+  const payload = buildOrderPayload({
+    requestId: "123e4567-e89b-42d3-a456-426614174000",
+    catalogGeneratedAt: "2026-07-20T00:00:00Z",
+    project: { id: "S系列::S001", code: "S001", title: "测试项目" },
+    selectedPrices: [{ label: "任务书", price: 20 }],
+    customer: { name: "李四", phone: "13900139000", wechat: "private-wx" },
+    shipping: { required: true, address: "上海市测试路1号" },
+    privacyAccepted: true
+  });
+  let request;
+  const result = await submitOrder(payload, async (url, options) => {
+    request = { url, options };
+    return { ok: true, json: async () => ({ ok: true, orderNo: "DD20260720-123E4567" }) };
+  });
+
+  assert.equal(request.url, "https://github-d2gr7dltobfb415cc.service.tcloudbase.com/api/orders");
+  assert.equal(request.url.includes("李四"), false);
+  assert.equal(request.options.method, "POST");
+  assert.deepEqual(JSON.parse(request.options.body), payload);
+  assert.equal(buildRequirementText(
+    { code: "S001", title: "测试项目" },
+    [{ label: "任务书", price: 20 }]
+  ).includes("李四"), false);
+  assert.equal(result.orderNo, "DD20260720-123E4567");
+  const source = await fs.readFile("site/app.js", "utf8");
+  assert.equal(source.includes("localStorage"), false);
+});
+
+test("订单接口错误会保留服务端提示供用户重试", async () => {
+  await assert.rejects(
+    () => submitOrder({}, async () => ({
+      ok: false,
+      json: async () => ({ ok: false, message: "报价数据已经更新，请刷新页面后重新选择" })
+    })),
+    /报价数据已经更新/
+  );
+});
+
+test("手机号必须包含足够数字，订单请求超时后可重试", async () => {
+  assert.equal(isValidPhone("138 0013 8000"), true);
+  assert.equal(isValidPhone("......"), false);
+  await assert.rejects(
+    () => submitOrder({}, (_url, options) => new Promise((_resolve, reject) => {
+      options.signal.addEventListener("abort", () => {
+        const error = new Error("aborted");
+        error.name = "AbortError";
+        reject(error);
+      }, { once: true });
+    }), 5),
+    /提交超时/
+  );
 });

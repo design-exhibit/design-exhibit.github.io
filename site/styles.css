@@ -135,13 +135,33 @@ h1 em { color: var(--cyan); font-style: normal; }
 .confirm-quote, .copy-quote { width: 100%; margin-top: 10px; padding: 10px 14px; border: 0; border-radius: 9px; color: #fff; background: var(--cyan-dark); cursor: pointer; font-size: 12px; font-weight: 800; }
 .confirm-quote:hover, .copy-quote:hover { background: #066d69; }
 .confirm-quote:disabled { color: #8d9aa7; background: #e4e9ed; cursor: not-allowed; }
-.quote-confirmation { display: grid; justify-items: center; gap: 10px; margin-top: 12px; padding: 14px; border: 1px solid #cce5e2; border-radius: 11px; background: #f4fbfa; }
+.quote-confirmation { display: grid; gap: 10px; margin-top: 12px; padding: 14px; border: 1px solid #cce5e2; border-radius: 11px; background: #f4fbfa; }
 .quote-confirmation h4 { justify-self: start; margin: 0; color: #075f5b; font-size: 14px; }
 .quote-text { width: 100%; padding: 10px; resize: vertical; border: 1px solid #c8d8df; border-radius: 8px; color: var(--ink); background: #fff; font: 12px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .copy-quote { margin-top: 0; background: var(--navy-2); }
 .copy-quote:hover { background: var(--navy); }
-.quote-hint { margin: 2px 0 0; color: var(--muted); text-align: center; font-size: 12px; line-height: 1.55; }
-.wechat-qr { width: min(220px, 100%); height: auto; display: block; border-radius: 10px; background: #fff; }
+.customer-form { display: grid; gap: 10px; padding-top: 12px; border-top: 1px solid #cce5e2; }
+.customer-form h5 { margin: 0; color: var(--ink); font-size: 13px; }
+.customer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.customer-field { display: grid; gap: 5px; min-width: 0; color: var(--muted); font-size: 12px; font-weight: 700; }
+.customer-field input, .customer-field textarea { width: 100%; min-width: 0; padding: 9px 10px; border: 1px solid #c8d8df; border-radius: 8px; color: var(--ink); background: #fff; font: inherit; font-size: 12px; line-height: 1.5; }
+.customer-field textarea { resize: vertical; }
+.customer-field input:focus, .customer-field textarea:focus { outline: 3px solid rgba(8,127,122,.16); border-color: var(--cyan-dark); }
+.customer-check { display: flex; align-items: flex-start; gap: 8px; color: var(--ink); cursor: pointer; font-size: 12px; line-height: 1.55; }
+.customer-check input { width: 16px; height: 16px; flex: 0 0 auto; margin: 1px 0 0; accent-color: var(--cyan-dark); }
+.privacy-check { color: var(--muted); }
+.field-error { margin: -3px 0 0; color: #a23535; font-size: 11px; }
+.order-status { margin: 0; padding: 9px 10px; border-radius: 8px; font-size: 12px; line-height: 1.55; }
+.order-status.pending { color: #735018; background: #fff3dc; }
+.order-status.success { color: #075f3d; background: #e3f5ea; font-weight: 800; }
+.order-status.error { color: #8f2f2f; background: #fdeaea; }
+.order-actions { display: flex; gap: 8px; }
+.submit-order, .edit-order { min-width: 0; flex: 1; padding: 10px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: 800; }
+.submit-order { border: 0; color: #fff; background: var(--cyan-dark); }
+.submit-order:hover { background: #066d69; }
+.submit-order:disabled { color: #8d9aa7; background: #e4e9ed; cursor: not-allowed; }
+.edit-order { border: 1px solid #aebfc9; color: var(--ink); background: #fff; }
+.edit-order:hover { border-color: var(--cyan-dark); color: var(--cyan-dark); }
 .empty-state { grid-column: 1 / -1; padding: 54px 20px; text-align: center; border: 1px dashed #bdcbd8; border-radius: 16px; color: var(--muted); background: rgba(255,255,255,.55); }
 .empty-state strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 18px; }
 .load-more-wrap { margin-top: 25px; text-align: center; }
@@ -169,6 +189,7 @@ h1 em { color: var(--cyan); font-style: normal; }
   .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 19px; }
   .catalog { padding: 24px 17px 60px; }
   .category-grid, .project-grid, .compact-grid { grid-template-columns: 1fr; }
+  .customer-grid { grid-template-columns: 1fr; }
   .mode-tabs { width: 100%; }
   .mode-tabs button { flex: 1; }
   .site-footer { align-items: flex-start; flex-direction: column; gap: 10px; padding: 25px 17px; }

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.cloudbase.net/cli/cloudbaserc.schema.json",
+  "envId": "github-d2gr7dltobfb415cc",
+  "functionRoot": "cloudbase/functions",
+  "functions": [
+    {
+      "name": "submitOrder",
+      "type": "HTTP",
+      "protocolType": "HTTP",
+      "runtime": "Nodejs20.19",
+      "timeout": 20,
+      "memorySize": 256,
+      "description": "接收课题需求并写入订单数据库"
+    }
+  ]
+}

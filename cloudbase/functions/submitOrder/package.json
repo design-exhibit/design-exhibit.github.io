@@ -1,0 +1,12 @@
+{
+  "name": "submit-order",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@cloudbase/node-sdk": "4.0.3"
+  },
+  "overrides": {
+    "axios": "1.18.1"
+  }
+}

@@ -8,3 +8,8 @@ __pycache__/
 ~$*.xlsx
 *.inspect.ndjson
 Thumbs.db
+/API*.md
+/config/mcporter.json
+/.agents/
+/skills-lock.json
+/项目链接清单.xlsx

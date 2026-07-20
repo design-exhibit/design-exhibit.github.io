@@ -2,6 +2,16 @@ const PALETTE = ["#118b86", "#2b71b8", "#8c62bd", "#d47b32", "#4d8f4e", "#b64f6f
 const DESIGN_PRICE_LABELS = new Set(["仿真+仿真代码", "原理图+PCB设计", "硬件实物+配套硬件代码"]);
 const DOCUMENT_PACKAGE_LABEL = "成果书+任务书+PPT+答辩模板+过AI+过查重";
 const DOCUMENT_SINGLE_LABELS = new Set(["成果书", "任务书", "PPT送答辩模板", "论文"]);
+const ORDER_ENDPOINT = "https://github-d2gr7dltobfb415cc.service.tcloudbase.com/api/orders";
+const PHONE_PATTERN = /^[0-9+().\-\s]{6,30}$/;
+const ORDER_TIMEOUT_MS = 20_000;
+
+export function isValidPhone(value) {
+  const normalized = String(value || "").trim();
+  if (!PHONE_PATTERN.test(normalized)) return false;
+  const digitCount = normalized.replace(/\D/g, "").length;
+  return digitCount >= 6 && digitCount <= 20;
+}
 
 export function normalizeText(value) {
   return String(value ?? "").toLowerCase().normalize("NFKC").replace(/\s+/g, " ").trim();
@@ -109,6 +119,77 @@ export function buildRequirementText(project, selectedPrices = [], note = "") {
   return result.join("\n");
 }
 
+export function buildOrderPayload({
+  requestId,
+  catalogGeneratedAt,
+  project,
+  selectedPrices,
+  note = "",
+  customer = {},
+  shipping = {},
+  privacyAccepted = false
+}) {
+  const shippingRequired = shipping.required === true;
+  return {
+    requestId,
+    catalogGeneratedAt,
+    projectId: project.id,
+    selectedLabels: selectedPrices.map((item) => item.label),
+    note: String(note).trim(),
+    customer: {
+      name: String(customer.name || "").trim(),
+      phone: String(customer.phone || "").trim(),
+      wechat: String(customer.wechat || "").trim()
+    },
+    shipping: {
+      required: shippingRequired,
+      address: shippingRequired ? String(shipping.address || "").trim() : ""
+    },
+    privacyAccepted: privacyAccepted === true,
+    website: ""
+  };
+}
+
+export async function submitOrder(payload, fetchImpl = globalThis.fetch, timeoutMs = ORDER_TIMEOUT_MS) {
+  const controller = typeof globalThis.AbortController === "function" ? new AbortController() : null;
+  const timeout = controller ? setTimeout(() => controller.abort(), timeoutMs) : null;
+  let response;
+  try {
+    response = await fetchImpl(ORDER_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      ...(controller ? { signal: controller.signal } : {})
+    });
+  } catch (error) {
+    if (error && error.name === "AbortError") throw new Error("提交超时，请重试");
+    throw new Error("网络连接失败，请检查网络后重试");
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
+
+  let result = {};
+  try {
+    result = await response.json();
+  } catch {
+    // 统一处理网关返回的非 JSON 错误页。
+  }
+  if (!response.ok || result.ok !== true || !result.orderNo) {
+    throw new Error(result.message || "订单提交失败，请稍后重试");
+  }
+  return result;
+}
+
+function createRequestId() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  const bytes = globalThis.crypto?.getRandomValues?.(new Uint8Array(16));
+  if (!bytes) throw new Error("当前浏览器不支持安全提交，请更换浏览器");
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((value) => value.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
 export function projectImageEntries(project) {
   return [
     { label: "仿真图片", image: project.simulationImage },
@@ -124,7 +205,7 @@ function groupCounts(projects, selector) {
   return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-CN"));
 }
 
-function createProjectCard(project, exact = false) {
+function createProjectCard(project, exact = false, catalogGeneratedAt = "") {
   const card = element("article", "project-card");
   const top = element("div", "project-topline");
   top.append(element("span", "project-id", project.code || project.id));
@@ -209,6 +290,7 @@ function createProjectCard(project, exact = false) {
     const noteLabel = element("label", "quote-note-label");
     const note = element("textarea", "quote-note-input");
     note.rows = 3;
+    note.maxLength = 500;
     note.placeholder = "例如：需要加急、修改功能、指定芯片型号等";
     noteLabel.append(element("span", "", "备注（选填）"), note);
     const confirm = element("button", "confirm-quote", "确认需求");
@@ -217,24 +299,113 @@ function createProjectCard(project, exact = false) {
 
     const confirmation = element("div", "quote-confirmation");
     confirmation.hidden = true;
-    const confirmationTitle = element("h4", "", "需求已确认");
+    const confirmationTitle = element("h4", "", "确认并提交需求");
     const quoteText = element("textarea", "quote-text");
     quoteText.readOnly = true;
     quoteText.rows = 8;
     quoteText.setAttribute("aria-label", "已确认的项目需求");
-    const copy = element("button", "copy-quote", "一键复制需求发送给客服");
+    const copy = element("button", "copy-quote", "一键复制需求");
     copy.type = "button";
-    const copyHint = element("p", "quote-hint", "复制后，请扫码添加客服微信并粘贴发送。");
-    const qr = element("img", "wechat-qr");
-    qr.src = "./assets/customer-wechat.png";
-    qr.alt = "客服微信二维码";
-    qr.loading = "lazy";
-    confirmation.append(confirmationTitle, quoteText, copy, copyHint, qr);
+
+    const customerForm = element("form", "customer-form");
+    const customerTitle = element("h5", "", "填写客户信息");
+    const nameLabel = element("label", "customer-field");
+    const name = element("input");
+    name.type = "text";
+    name.required = true;
+    name.maxLength = 30;
+    name.autocomplete = "name";
+    name.placeholder = "怎么称呼您";
+    nameLabel.append(element("span", "", "姓名 *"), name);
+
+    const contactFields = element("div", "customer-grid");
+    const phoneLabel = element("label", "customer-field");
+    const phone = element("input");
+    phone.type = "tel";
+    phone.maxLength = 30;
+    phone.autocomplete = "tel";
+    phone.placeholder = "手机号";
+    phoneLabel.append(element("span", "", "手机号"), phone);
+    const wechatLabel = element("label", "customer-field");
+    const wechat = element("input");
+    wechat.type = "text";
+    wechat.maxLength = 50;
+    wechat.autocomplete = "off";
+    wechat.placeholder = "微信号";
+    wechatLabel.append(element("span", "", "微信号"), wechat);
+    contactFields.append(phoneLabel, wechatLabel);
+    const contactError = element("p", "field-error", "手机号和微信号至少填写一项");
+    contactError.hidden = true;
+
+    const shippingLabel = element("label", "customer-check");
+    const shippingRequired = element("input");
+    shippingRequired.type = "checkbox";
+    shippingLabel.append(shippingRequired, element("span", "", "需要邮寄实物或资料"));
+    const addressLabel = element("label", "customer-field");
+    addressLabel.hidden = true;
+    const address = element("textarea");
+    address.rows = 3;
+    address.maxLength = 300;
+    address.autocomplete = "street-address";
+    address.placeholder = "省市区、街道、门牌号及收件信息";
+    addressLabel.append(element("span", "", "收货地址 *"), address);
+
+    const privacyLabel = element("label", "customer-check privacy-check");
+    const privacy = element("input");
+    privacy.type = "checkbox";
+    privacy.required = true;
+    privacyLabel.append(privacy, element("span", "", "我同意将以上信息用于需求确认、联系沟通及邮寄"));
+
+    const orderStatus = element("p", "order-status");
+    orderStatus.hidden = true;
+    orderStatus.setAttribute("aria-live", "polite");
+    const formActions = element("div", "order-actions");
+    const submitButton = element("button", "submit-order", "提交需求");
+    submitButton.type = "submit";
+    const editButton = element("button", "edit-order", "修改信息");
+    editButton.type = "button";
+    editButton.hidden = true;
+    formActions.append(submitButton, editButton);
+    customerForm.append(
+      customerTitle,
+      nameLabel,
+      contactFields,
+      contactError,
+      shippingLabel,
+      addressLabel,
+      privacyLabel,
+      orderStatus,
+      formActions
+    );
+    confirmation.append(confirmationTitle, quoteText, copy, customerForm);
 
     const selectedOptions = () => choices.filter(({ checkbox }) => checkbox.checked).map(({ option }) => option);
+    let quoteSnapshot = null;
+    let submitSnapshot = null;
+    const setLocked = (locked) => {
+      for (const { checkbox } of choices) checkbox.disabled = locked;
+      for (const control of [note, name, phone, wechat, shippingRequired, address, privacy]) control.disabled = locked;
+      confirm.disabled = locked || !selectedOptions().length;
+    };
+    const showOrderStatus = (message, type) => {
+      orderStatus.textContent = message;
+      orderStatus.className = `order-status ${type}`;
+      orderStatus.hidden = false;
+    };
     const resetConfirmation = () => {
+      quoteSnapshot = null;
+      submitSnapshot = null;
       confirmation.hidden = true;
-      copy.textContent = "一键复制需求发送给客服";
+      copy.textContent = "一键复制需求";
+      customerForm.reset();
+      address.required = false;
+      addressLabel.hidden = true;
+      contactError.hidden = true;
+      phone.setCustomValidity("");
+      orderStatus.hidden = true;
+      editButton.hidden = true;
+      submitButton.disabled = false;
+      submitButton.textContent = "提交需求";
     };
     list.addEventListener("change", (event) => {
       const changed = choices.find(({ checkbox }) => checkbox === event.target);
@@ -251,7 +422,16 @@ function createProjectCard(project, exact = false) {
     });
     note.addEventListener("input", resetConfirmation);
     confirm.addEventListener("click", () => {
-      quoteText.value = buildRequirementText(project, selectedOptions(), note.value);
+      quoteSnapshot = {
+        selectedPrices: selectedOptions().map((option) => ({ label: option.label, price: option.price })),
+        note: note.value.trim()
+      };
+      submitSnapshot = null;
+      quoteText.value = buildRequirementText(project, quoteSnapshot.selectedPrices, quoteSnapshot.note);
+      orderStatus.hidden = true;
+      editButton.hidden = true;
+      submitButton.disabled = false;
+      submitButton.textContent = "提交需求";
       confirmation.hidden = false;
       confirmation.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
@@ -272,11 +452,100 @@ function createProjectCard(project, exact = false) {
           copied = document.execCommand("copy");
         }
         if (!copied) throw new Error("复制失败");
-        copy.textContent = "已复制，请发送给客服";
+        copy.textContent = "需求已复制";
       } catch {
         quoteText.focus();
         quoteText.select();
         copy.textContent = "复制失败，请手动复制";
+      }
+    });
+    shippingRequired.addEventListener("change", () => {
+      address.required = shippingRequired.checked;
+      addressLabel.hidden = !shippingRequired.checked;
+      if (shippingRequired.checked) address.focus();
+    });
+    const clearContactError = () => {
+      if (phone.value.trim() || wechat.value.trim()) {
+        phone.setCustomValidity("");
+        contactError.textContent = "手机号和微信号至少填写一项";
+        contactError.hidden = true;
+      }
+    };
+    name.addEventListener("input", () => name.setCustomValidity(""));
+    phone.addEventListener("input", clearContactError);
+    wechat.addEventListener("input", clearContactError);
+    address.addEventListener("input", () => address.setCustomValidity(""));
+    editButton.addEventListener("click", () => {
+      submitSnapshot = null;
+      setLocked(false);
+      submitButton.disabled = false;
+      submitButton.textContent = "提交需求";
+      editButton.hidden = true;
+      orderStatus.hidden = true;
+      name.focus();
+    });
+    customerForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!name.value.trim()) {
+        name.setCustomValidity("请填写姓名");
+        name.reportValidity();
+        return;
+      }
+      name.setCustomValidity("");
+      if (!phone.value.trim() && !wechat.value.trim()) {
+        phone.setCustomValidity("请填写手机号或微信号");
+        contactError.textContent = "手机号和微信号至少填写一项";
+        contactError.hidden = false;
+        phone.reportValidity();
+        return;
+      }
+      if (phone.value.trim() && !isValidPhone(phone.value)) {
+        phone.setCustomValidity("手机号格式不正确");
+        contactError.textContent = "手机号格式不正确";
+        contactError.hidden = false;
+        phone.reportValidity();
+        return;
+      }
+      phone.setCustomValidity("");
+      contactError.textContent = "手机号和微信号至少填写一项";
+      contactError.hidden = true;
+      if (shippingRequired.checked && !address.value.trim()) {
+        address.setCustomValidity("请填写收货地址");
+        address.reportValidity();
+        return;
+      }
+      address.setCustomValidity("");
+
+      if (!submitSnapshot) {
+        submitSnapshot = buildOrderPayload({
+          requestId: createRequestId(),
+          catalogGeneratedAt,
+          project,
+          selectedPrices: quoteSnapshot.selectedPrices,
+          note: quoteSnapshot.note,
+          customer: { name: name.value, phone: phone.value, wechat: wechat.value },
+          shipping: { required: shippingRequired.checked, address: address.value },
+          privacyAccepted: privacy.checked
+        });
+      }
+
+      setLocked(true);
+      submitButton.disabled = true;
+      submitButton.textContent = "正在提交…";
+      editButton.hidden = true;
+      customerForm.setAttribute("aria-busy", "true");
+      showOrderStatus("正在提交需求，请稍候…", "pending");
+      try {
+        const result = await submitOrder(submitSnapshot);
+        showOrderStatus(`提交成功，订单号：${result.orderNo}`, "success");
+        submitButton.textContent = "提交成功";
+      } catch (error) {
+        showOrderStatus(error.message || "订单提交失败，请稍后重试", "error");
+        submitButton.disabled = false;
+        submitButton.textContent = "重试提交";
+        editButton.hidden = false;
+      } finally {
+        customerForm.removeAttribute("aria-busy");
       }
     });
     details.append(summary, list, total, noteLabel, confirm, confirmation);
@@ -431,7 +700,9 @@ if (typeof document !== "undefined") {
     refs.kicker.textContent = "项目列表";
     refs.title.textContent = state.category;
     refs.description.textContent = `${state.mcu} / ${projects.length} 个匹配项目`;
-    for (const project of projects.slice(0, state.limit)) refs.content.append(createProjectCard(project));
+    for (const project of projects.slice(0, state.limit)) {
+      refs.content.append(createProjectCard(project, false, state.meta.generatedAt));
+    }
     if (!projects.length) refs.content.append(createEmpty("暂无项目", "该分类暂时没有可展示的课题。"));
     refs.loadMoreWrap.hidden = projects.length <= state.limit;
   }
@@ -445,7 +716,9 @@ if (typeof document !== "undefined") {
     const results = searchProjects(currentScope(), query);
     refs.searchCount.textContent = `找到 ${results.length} 个项目`;
     refs.searchResults.replaceChildren();
-    for (const result of results.slice(0, 12)) refs.searchResults.append(createProjectCard(result.project, result.exact));
+    for (const result of results.slice(0, 12)) {
+      refs.searchResults.append(createProjectCard(result.project, result.exact, state.meta.generatedAt));
+    }
     if (!results.length) refs.searchResults.append(createEmpty("没有找到匹配项目", "试试缩短关键词，或返回上一级扩大搜索范围。"));
   }
 

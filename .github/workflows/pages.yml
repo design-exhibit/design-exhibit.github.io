@@ -6,6 +6,8 @@ on:
     paths:
       - "data/项目链接清单.xlsx"
       - "site/**"
+      - "cloudbase/functions/submitOrder/**"
+      - "cloudbaserc.json"
       - "scripts/excel_to_json.py"
       - "test/**"
       - "requirements.txt"
@@ -50,7 +52,10 @@ jobs:
         with:
           node-version: 22
 
-      - name: 测试网页搜索
+      - name: 安装云函数依赖
+        run: npm ci --prefix cloudbase/functions/submitOrder
+
+      - name: 测试网页与云函数
         run: node --test
 
       - name: 配置GitHub Pages

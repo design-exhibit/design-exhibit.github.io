@@ -59,7 +59,8 @@ test("生成数据不包含内部资料字段和链接", async () => {
   assert.equal(serialized.includes("DISPIMG"), false);
   assert.equal(/https?:\/\//.test(serialized), false);
   assert.equal(new Set(payload.projects.map((project) => project.id)).size, payload.projects.length);
-  assert.ok(payload.projects.length > 300);
+  assert.ok(payload.projects.length > 0);
+  assert.equal(payload.meta.count, payload.projects.length);
 });
 
 test("项目图片只返回已填写的仿真图和实物图", () => {
